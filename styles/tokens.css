@@ -1,0 +1,110 @@
+/**
+ * Design Tokens
+ * 
+ * This file contains all design tokens (design system variables)
+ * extracted from the Figma design.
+ * 
+ * Currently includes: Colors
+ * Future expansion: Typography, Spacing, Shadows, etc.
+ */
+
+:root {
+  /* ========================================
+     COLOR TOKENS
+     ======================================== */
+  
+  /* Neutral Colors */
+  --color-neutral-100: #ffffff;
+  --color-neutral-300: #e1e9ef;
+  --color-neutral-400: #c7d3d9;
+  --color-neutral-500: #777a7c;
+  --color-neutral-900: #3d3d3d;
+  
+  /* Content Colors */
+  --color-content-primary: #1a1a1a;
+  --color-content-tertiary: #6d6f70;
+  
+  /* Background Colors */
+  --color-bg-main: #f7f9fc;
+  --color-bg-block: #f3f3f3;
+  
+  /* ========================================
+     SEMANTIC COLOR ALIASES
+     (Use these in your components)
+     ======================================== */
+  
+  /* Text */
+  --color-text-primary: var(--color-content-primary);
+  --color-text-secondary: var(--color-content-tertiary);
+  --color-text-muted: var(--color-neutral-500);
+  --color-text-inverse: var(--color-neutral-100);
+  
+  /* Backgrounds */
+  --color-bg-primary: var(--color-neutral-100);
+  --color-bg-secondary: var(--color-bg-main);
+  --color-bg-tertiary: var(--color-bg-block);
+  
+  /* Borders */
+  --color-border-default: var(--color-neutral-400);
+  --color-border-light: var(--color-neutral-300);
+  
+  /* Buttons */
+  --color-btn-primary-bg: var(--color-neutral-900);
+  --color-btn-primary-text: var(--color-neutral-100);
+  --color-btn-secondary-bg: var(--color-neutral-100);
+  --color-btn-secondary-text: var(--color-content-primary);
+  --color-btn-secondary-border: var(--color-neutral-400);
+  
+  /* ========================================
+     TYPOGRAPHY TOKENS
+     (To be expanded)
+     ======================================== */
+  
+  --font-family-primary: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-secondary: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  --font-size-label: 12px;
+  --font-size-body-default: 14px;
+  --font-size-body-large: 16px;
+  --font-size-title-section: 26px;
+  
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  --line-height-tight: 1;
+  --line-height-normal: 22px;
+  --line-height-relaxed: 24px;
+  --line-height-loose: 32px;
+  
+  /* ========================================
+     SPACING TOKENS
+     (To be expanded)
+     ======================================== */
+  
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 96px;
+  
+  /* ========================================
+     BORDER RADIUS TOKENS
+     ======================================== */
+  
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 500px;
+  
+  /* ========================================
+     LAYOUT TOKENS
+     ======================================== */
+  
+  --container-max-width: 1280px;
+  --header-height: 126px;
+}

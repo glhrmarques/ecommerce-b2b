@@ -1,0 +1,240 @@
+/**
+ * Header Component Styles
+ * 
+ * A reusable header component that includes:
+ * - Logo
+ * - Search bar
+ * - Authentication buttons (Login/Sign up)
+ * - Navigation menu
+ */
+
+.header {
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border-default);
+  width: 100%;
+}
+
+/* ========================================
+   TOP BAR (Logo, Search, Auth Buttons)
+   ======================================== */
+
+.header__top {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-md) var(--spacing-4xl);
+  background-color: var(--color-bg-primary);
+}
+
+/* Logo */
+.header__logo {
+  flex-shrink: 0;
+  width: 92px;
+  height: 30px;
+}
+
+.header__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Search Bar */
+.header__search {
+  flex: 1;
+  min-width: 0; /* Allow flex item to shrink below content size */
+}
+
+.header__search-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  height: 40px;
+  transition: border-color 0.2s ease;
+}
+
+.header__search-container:focus-within {
+  border-color: var(--color-neutral-500);
+}
+
+.header__search-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__search-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-neutral-500);
+}
+
+.header__search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body-default);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
+}
+
+.header__search-input::placeholder {
+  color: var(--color-neutral-500);
+}
+
+/* Auth Buttons */
+.header__auth {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-shrink: 0;
+}
+
+.header__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  height: 40px;
+  width: 104px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body-default);
+  font-weight: var(--font-weight-extrabold);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.header__btn--secondary {
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text);
+  border: 1px solid var(--color-btn-secondary-border);
+}
+
+.header__btn--secondary:hover {
+  background-color: var(--color-bg-tertiary);
+}
+
+.header__btn--primary {
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+}
+
+.header__btn--primary:hover {
+  background-color: var(--color-content-primary);
+}
+
+/* ========================================
+   NAVIGATION MENU
+   ======================================== */
+
+.header__nav {
+  background-color: var(--color-bg-primary);
+  padding: 0 var(--spacing-4xl);
+  height: 48px;
+}
+
+.header__nav-list {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header__nav-item {
+  flex: 1;
+  height: 100%;
+}
+
+.header__nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 var(--spacing-md);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body-default);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.header__nav-link:hover {
+  background-color: var(--color-bg-tertiary);
+}
+
+.header__nav-link--active {
+  font-weight: var(--font-weight-bold);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .header__top {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+  
+  .header__nav {
+    padding: 0 var(--spacing-lg);
+  }
+  
+  .header__nav-list {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__top {
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
+  
+  .header__search {
+    order: 3;
+    flex-basis: 100%;
+  }
+  
+  .header__btn {
+    width: auto;
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .header__top {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .header__nav {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .header__logo {
+    width: 70px;
+    height: 22px;
+  }
+  
+  .header__btn {
+    font-size: 12px;
+    padding: var(--spacing-xs);
+  }
+}

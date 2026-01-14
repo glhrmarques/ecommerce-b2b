@@ -1,0 +1,69 @@
+<!-- 
+  Header Component
+  
+  This is a reusable header component template.
+  Copy this markup wherever you need the header.
+-->
+
+<header class="header">
+  <!-- Top Bar: Logo, Search, Auth -->
+  <div class="header__top">
+    <!-- Logo -->
+    <a href="/" class="header__logo" aria-label="Taiff - Home">
+      <img src="../../assets/images/logo.svg" alt="Taiff" />
+    </a>
+
+    <!-- Search Bar -->
+    <form class="header__search" role="search">
+      <div class="header__search-container">
+        <div class="header__search-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <input 
+          type="search" 
+          class="header__search-input" 
+          placeholder="Busque por produtos, marcas e muito mais..."
+          aria-label="Buscar produtos"
+        />
+      </div>
+    </form>
+
+    <!-- Auth Buttons -->
+    <div class="header__auth">
+      <a href="/login" class="header__btn header__btn--secondary">
+        Entrar
+      </a>
+      <a href="/register" class="header__btn header__btn--primary">
+        Criar conta
+      </a>
+    </div>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav class="header__nav" role="navigation" aria-label="Menu principal">
+    <ul class="header__nav-list">
+      <li class="header__nav-item">
+        <a href="/produtos" class="header__nav-link" data-nav-item="produtos">
+          Todos os produtos
+        </a>
+      </li>
+      <li class="header__nav-item">
+        <a href="/novidades" class="header__nav-link" data-nav-item="novidades">
+          Novidades
+        </a>
+      </li>
+      <li class="header__nav-item">
+        <a href="/marcas" class="header__nav-link" data-nav-item="marcas">
+          Marcas
+        </a>
+      </li>
+      <li class="header__nav-item">
+        <a href="/promocoes" class="header__nav-link" data-nav-item="promocoes">
+          Promoções
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
