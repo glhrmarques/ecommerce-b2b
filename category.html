@@ -139,9 +139,54 @@
 
     <!-- Category Content Area -->
     <div class="category-content">
-      <div class="category-content__header">
-        <h1 class="category-content__title" id="category-title">Todos os produtos</h1>
-      </div>
+      <!-- Filters Sidebar -->
+      <aside class="category-filters">
+        <div class="category-filters__header">
+          <h2 class="category-filters__title">Filtrar por</h2>
+        </div>
+        
+        <div class="category-filters__list">
+          <!-- Marcas Filter -->
+          <button class="category-filters__item">
+            <span class="category-filters__item-text">Marcas</span>
+            <svg class="category-filters__item-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <!-- Categorias Filter -->
+          <button class="category-filters__item">
+            <span class="category-filters__item-text">Categorias</span>
+            <svg class="category-filters__item-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <!-- Subcategorias Filter -->
+          <button class="category-filters__item">
+            <span class="category-filters__item-text">Subcategorias</span>
+            <svg class="category-filters__item-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <!-- Atributos Filter -->
+          <button class="category-filters__item">
+            <span class="category-filters__item-text">Atributos</span>
+            <svg class="category-filters__item-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <!-- Preço Filter -->
+          <button class="category-filters__item">
+            <span class="category-filters__item-text">Preço</span>
+            <svg class="category-filters__item-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </aside>
       
       <!-- Products Grid -->
       <div class="category-content__products" id="products-container">
@@ -657,12 +702,17 @@
     .main {
       min-height: calc(100vh - 200px);
       background-color: var(--color-bg-primary);
+      overflow-x: hidden;
     }
 
     .category-content {
       max-width: 1280px;
       margin: 0 auto;
       padding: var(--spacing-4xl) var(--spacing-4xl);
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      overflow-x: hidden;
     }
 
     .category-content__header {
@@ -677,10 +727,71 @@
       margin: 0;
     }
 
+    /* Filters Sidebar */
+    .category-filters {
+      background-color: var(--color-bg-primary);
+      width: 184px;
+      flex-shrink: 0;
+    }
+
+    .category-filters__header {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .category-filters__title {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-body-large);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+      line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+
+    .category-filters__list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .category-filters__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) var(--spacing-sm);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      height: 60px;
+    }
+
+    .category-filters__item:hover {
+      background-color: var(--color-bg-secondary);
+    }
+
+    .category-filters__item-text {
+      font-family: var(--font-family-primary);
+      font-size: 14px;
+      font-weight: var(--font-weight-bold);
+      color: #373d43;
+      line-height: var(--line-height-relaxed);
+      text-align: left;
+      flex: 1;
+    }
+
+    .category-filters__item-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--color-text-primary);
+      flex-shrink: 0;
+    }
+
+    /* Products Grid */
     .category-content__products {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: var(--spacing-2xl);
+      flex: 1;
+      min-width: 0;
       width: 100%;
     }
 
@@ -688,10 +799,15 @@
     @media (max-width: 1024px) {
       .category-content {
         padding: var(--spacing-2xl) var(--spacing-lg);
+        gap: var(--spacing-2xl);
+      }
+
+      .category-filters {
+        width: 220px;
       }
 
       .category-content__products {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: var(--spacing-xl);
       }
     }
@@ -699,6 +815,12 @@
     @media (max-width: 768px) {
       .category-content {
         padding: var(--spacing-xl) var(--spacing-md);
+        flex-direction: column;
+        gap: var(--spacing-xl);
+      }
+
+      .category-filters {
+        width: 100%;
       }
 
       .category-content__title {
@@ -706,14 +828,14 @@
       }
 
       .category-content__products {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: var(--spacing-lg);
       }
     }
 
     @media (max-width: 480px) {
       .category-content__products {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: var(--spacing-md);
       }
     }
