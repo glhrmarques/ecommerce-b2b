@@ -15,6 +15,9 @@
   <!-- Header Component Styles -->
   <link rel="stylesheet" href="./components/header/header.css">
   
+  <!-- Banners Component Styles -->
+  <link rel="stylesheet" href="./components/banners/banners.css">
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,17 +90,52 @@
 
   <!-- Main Content -->
   <main>
-    <div class="container" style="padding: 2rem;">
-      <h1>Welcome to Taiff E-commerce</h1>
-      <p style="margin-top: 1rem; color: var(--color-text-secondary);">
-        The header component is now ready to use across your project.
-      </p>
-    </div>
+    <!-- Banners Component -->
+    <section class="banners">
+      <div class="banners__slideshow">
+        <!-- Slide 1 - Caixa Amplificada C05 -->
+        <div class="banners__slide banners__slide--active" data-slide="1">
+          <img 
+            src="./assets/images/Banner-Institucional-C05-v2.jpg" 
+            alt="Caixa Amplificada C05 - 100W" 
+            class="banners__image"
+          />
+        </div>
+
+        <!-- Slide 2 - Teclado Mecânico TANK -->
+        <div class="banners__slide" data-slide="2">
+          <img 
+            src="./assets/images/Banner-Institucional-TANK.jpg" 
+            alt="Teclado Mecânico TANK - Para quem quer subir de ranking" 
+            class="banners__image"
+          />
+        </div>
+      </div>
+
+      <!-- Arrow Navigation -->
+      <button 
+        class="banners__arrow banners__arrow--prev" 
+        aria-label="Slide anterior"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button 
+        class="banners__arrow banners__arrow--next" 
+        aria-label="Próximo slide"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </section>
   </main>
 
-  <!-- Header Component Script -->
+  <!-- Component Scripts -->
   <script type="module">
     import { initHeader } from './components/header/header.js';
+    import { initBanners } from './components/banners/banners.js';
     
     // Initialize the header with configuration
     initHeader({
@@ -107,6 +145,12 @@
         console.log('Searching for:', query);
         // You can implement your search logic here
       }
+    });
+
+    // Initialize the banners with configuration
+    initBanners({
+      autoPlay: true,
+      autoPlayInterval: 5000 // Change slides every 5 seconds
     });
   </script>
 </body>

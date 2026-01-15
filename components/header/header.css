@@ -59,6 +59,7 @@
 
 .header__search-container:focus-within {
   border-color: var(--color-neutral-500);
+  border-width: 2px;
 }
 
 .header__search-icon {
@@ -86,6 +87,10 @@
   font-weight: var(--font-weight-regular);
   color: var(--color-text-primary);
   line-height: var(--line-height-normal);
+}
+
+.header__search-input:focus {
+  outline: none;
 }
 
 .header__search-input::placeholder {
