@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Taiff - Categoria de Produtos">
+  <title>Taiff - Categoria</title>
+  
+  <!-- Design Tokens -->
+  <link rel="stylesheet" href="./styles/tokens.css">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="./styles/base.css">
+  
+  <!-- Header Component Styles -->
+  <link rel="stylesheet" href="./components/header/header.css">
+  
+  <!-- Banners Component Styles -->
+  <link rel="stylesheet" href="./components/banners/banners.css">
+  
+  <!-- Product Card Component Styles -->
+  <link rel="stylesheet" href="./components/product-card/product-card.css">
+  
+  <!-- Footer Component Styles -->
+  <link rel="stylesheet" href="./components/footer/footer.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header Component -->
+  <header class="header">
+    <!-- Top Bar: Logo, Search, Auth -->
+    <div class="header__top">
+      <!-- Logo -->
+      <a href="/" class="header__logo" aria-label="Taiff - Home">
+        <img src="./assets/images/bright-logo.png" alt="Bright" />
+      </a>
+
+      <!-- Search Bar -->
+      <form class="header__search" role="search">
+        <div class="header__search-container">
+          <div class="header__search-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input 
+            type="search" 
+            class="header__search-input" 
+            placeholder="Busque por produtos, marcas e muito mais..."
+            aria-label="Buscar produtos"
+          />
+        </div>
+      </form>
+
+      <!-- Auth Buttons -->
+      <div class="header__auth">
+        <a href="/login" class="header__btn header__btn--secondary">
+          Entrar
+        </a>
+        <a href="/register" class="header__btn header__btn--primary">
+          Criar conta
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="header__nav" role="navigation" aria-label="Menu principal">
+      <ul class="header__nav-list">
+        <li class="header__nav-item">
+          <a href="./category.html" class="header__nav-link" data-nav-item="produtos">
+            Todos os produtos
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="./category.html" class="header__nav-link" data-nav-item="novidades">
+            Novidades
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="./category.html" class="header__nav-link" data-nav-item="marcas">
+            Marcas
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="./category.html" class="header__nav-link" data-nav-item="promocoes">
+            Promoções
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Banner Component -->
+    <div class="banners">
+      <div class="banners__container">
+        <!-- Banner Slides -->
+        <div class="banners__slides">
+          <div class="banners__slide banners__slide--active">
+            <img 
+              src="./assets/images/Banner-Institucional-C05-v2.jpg" 
+              alt="Banner Institucional" 
+              class="banners__image"
+            />
+          </div>
+          <div class="banners__slide">
+            <img 
+              src="./assets/images/Banner-Institucional-TANK.jpg" 
+              alt="Banner Institucional Tank" 
+              class="banners__image"
+            />
+          </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="banners__arrow banners__arrow--prev" aria-label="Slide anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button class="banners__arrow banners__arrow--next" aria-label="Próximo slide">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <!-- Indicators -->
+        <div class="banners__indicators">
+          <button class="banners__indicator banners__indicator--active" data-slide="0" aria-label="Ir para slide 1"></button>
+          <button class="banners__indicator" data-slide="1" aria-label="Ir para slide 2"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Content Area -->
+    <div class="category-content">
+      <!-- Filters Sidebar -->
+      <aside class="category-filters">
+        <div class="category-filters__header">
+          <h2 class="category-filters__title">Filtrar por</h2>
+        </div>
+        
+        <div class="category-filters__list">
+          <!-- Marcas Filter -->
+          <button class="category-filters__item">
+            <span class="category-filters__item-text">Marcas</span>
+            <svg class="category-filters__item-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <!-- Categorias Filter -->
+          <button class="category-filters__item">
+            <span class="category-filters__item-text">Categorias</span>
+            <svg class="category-filters__item-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <!-- Subcategorias Filter -->
+          <button class="category-filters__item">
+            <span class="category-filters__item-text">Subcategorias</span>
+            <svg class="category-filters__item-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <!-- Atributos Filter -->
+          <button class="category-filters__item">
+            <span class="category-filters__item-text">Atributos</span>
+            <svg class="category-filters__item-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <!-- Preço Filter -->
+          <button class="category-filters__item">
+            <span class="category-filters__item-text">Preço</span>
+            <svg class="category-filters__item-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </aside>
+      
+      <!-- Products Grid -->
+      <div class="category-content__products" id="products-container">
+        <!-- Product Card 1 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-1.jpg" 
+              alt="Cadeira gamer Preta" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7896046700584</span>
+            <h3 class="product-card__name">Cadeira gamer Preta</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 2 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-2.jpg" 
+              alt="Monitor Led Full Hd 27'' Office" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7897982208271</span>
+            <h3 class="product-card__name">Monitor Led Full Hd 27'' Office</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 3 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-3.jpg" 
+              alt="Mouse USB Amarelo" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 789798220520-1</span>
+            <h3 class="product-card__name">Mouse USB Amarelo</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 4 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-4.jpg" 
+              alt="Fone de Ouvido Sem Fio Blacksound II" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7897982207397</span>
+            <h3 class="product-card__name">Fone de Ouvido Sem Fio Blacksound II</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 5 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-5.jpg" 
+              alt="Placa Mãe H55 Bright" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 789798220875</span>
+            <h3 class="product-card__name">Placa Mãe H55 Bright</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 6 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-1.jpg" 
+              alt="Cadeira gamer Preta" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7896046700584</span>
+            <h3 class="product-card__name">Cadeira gamer Preta</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 7 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-2.jpg" 
+              alt="Monitor Led Full Hd 27'' Office" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7897982208271</span>
+            <h3 class="product-card__name">Monitor Led Full Hd 27'' Office</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 8 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-3.jpg" 
+              alt="Mouse USB Amarelo" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 789798220520-1</span>
+            <h3 class="product-card__name">Mouse USB Amarelo</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 9 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-4.jpg" 
+              alt="Fone de Ouvido Sem Fio Blacksound II" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7897982207397</span>
+            <h3 class="product-card__name">Fone de Ouvido Sem Fio Blacksound II</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 10 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-5.jpg" 
+              alt="Placa Mãe H55 Bright" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 789798220875</span>
+            <h3 class="product-card__name">Placa Mãe H55 Bright</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 11 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-1.jpg" 
+              alt="Cadeira gamer Preta" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7896046700584</span>
+            <h3 class="product-card__name">Cadeira gamer Preta</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 12 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-2.jpg" 
+              alt="Monitor Led Full Hd 27'' Office" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7897982208271</span>
+            <h3 class="product-card__name">Monitor Led Full Hd 27'' Office</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 13 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-3.jpg" 
+              alt="Mouse USB Amarelo" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 789798220520-1</span>
+            <h3 class="product-card__name">Mouse USB Amarelo</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 14 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-4.jpg" 
+              alt="Fone de Ouvido Sem Fio Blacksound II" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7897982207397</span>
+            <h3 class="product-card__name">Fone de Ouvido Sem Fio Blacksound II</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 15 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-5.jpg" 
+              alt="Placa Mãe H55 Bright" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 789798220875</span>
+            <h3 class="product-card__name">Placa Mãe H55 Bright</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 16 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-1.jpg" 
+              alt="Cadeira gamer Preta" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7896046700584</span>
+            <h3 class="product-card__name">Cadeira gamer Preta</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 17 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-2.jpg" 
+              alt="Monitor Led Full Hd 27'' Office" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7897982208271</span>
+            <h3 class="product-card__name">Monitor Led Full Hd 27'' Office</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 18 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-3.jpg" 
+              alt="Mouse USB Amarelo" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 789798220520-1</span>
+            <h3 class="product-card__name">Mouse USB Amarelo</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 19 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-4.jpg" 
+              alt="Fone de Ouvido Sem Fio Blacksound II" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7897982207397</span>
+            <h3 class="product-card__name">Fone de Ouvido Sem Fio Blacksound II</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 20 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-5.jpg" 
+              alt="Placa Mãe H55 Bright" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 789798220875</span>
+            <h3 class="product-card__name">Placa Mãe H55 Bright</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Component -->
+  <footer class="footer">
+    <!-- Footer Links Section -->
+    <div class="footer__content">
+      <!-- Institucional Column -->
+      <div class="footer__column">
+        <h3 class="footer__title">Institucional</h3>
+        <ul class="footer__links">
+          <li><a href="/sobre" class="footer__link">Sobre nós</a></li>
+          <li><a href="/blog" class="footer__link">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Privacidade e Termos Column -->
+      <div class="footer__column">
+        <h3 class="footer__title">Privacidade e termos</h3>
+        <ul class="footer__links">
+          <li><a href="/privacidade" class="footer__link">Política de Privacidade</a></li>
+          <li><a href="/cookies" class="footer__link">Política de Cookies</a></li>
+        </ul>
+      </div>
+
+      <!-- Suporte e Soluções Column -->
+      <div class="footer__column">
+        <h3 class="footer__title">Suporte e soluções</h3>
+        <ul class="footer__links">
+          <li><a href="/ajuda" class="footer__link">Central de ajuda</a></li>
+        </ul>
+      </div>
+
+      <!-- Fale Conosco Column -->
+      <div class="footer__column footer__column--contact">
+        <h3 class="footer__title">Fale conosco</h3>
+        <ul class="footer__links">
+          <li><a href="tel:1193065-9533" class="footer__link">SAC: (11) 93065-9533</a></li>
+          <li><a href="mailto:atendimento@.com.br" class="footer__link">atendimento@.com.br</a></li>
+          <li class="footer__text">Atendimento de Segunda a Sexta-Feira (08h00 às 18h00)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom - Logo -->
+    <div class="footer__bottom">
+      <a href="/" class="footer__logo" aria-label="Taiff - Home">
+        <img src="assets/images/bright-logo.png" alt="Bright" />
+      </a>
+    </div>
+  </footer>
+
+  <!-- Component Scripts -->
+  <script src="components/header/header.js"></script>
+  <script src="components/banners/banners.js"></script>
+  <script src="components/product-card/product-card.js"></script>
+  <script src="components/footer/footer.js"></script>
+
+  <!-- Category Page Script -->
+  <script>
+    // Get category type from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryType = urlParams.get('type') || 'produtos';
+
+    // Update page title based on category
+    const categoryTitles = {
+      'produtos': 'Todos os produtos',
+      'novidades': 'Novidades',
+      'marcas': 'Marcas',
+      'promocoes': 'Promoções'
+    };
+
+    // Update the title
+    const titleElement = document.getElementById('category-title');
+    if (titleElement && categoryTitles[categoryType]) {
+      titleElement.textContent = categoryTitles[categoryType];
+      document.title = `Taiff - ${categoryTitles[categoryType]}`;
+    }
+
+    // Highlight active navigation item
+    const navLinks = document.querySelectorAll('.header__nav-link');
+    navLinks.forEach(link => {
+      const navItem = link.getAttribute('data-nav-item');
+      if (navItem === categoryType) {
+        link.classList.add('header__nav-link--active');
+      }
+    });
+
+    // Initialize banners
+    initBanners({
+      autoPlay: true,
+      autoPlayInterval: 5000
+    });
+
+    // Initialize product cards
+    initProductCards({
+      onClick: (data) => {
+        console.log('Product card clicked:', data.productName);
+      },
+      onButtonClick: (data) => {
+        console.log('View price clicked for:', data.productName);
+      }
+    });
+
+    console.log('Category page loaded:', categoryType);
+  </script>
+
+  <style>
+    /* Category Page Specific Styles */
+    .main {
+      min-height: calc(100vh - 200px);
+      background-color: var(--color-bg-primary);
+      overflow-x: hidden;
+    }
+
+    .category-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: var(--spacing-4xl) var(--spacing-4xl);
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      overflow-x: hidden;
+    }
+
+    .category-content__header {
+      margin-bottom: var(--spacing-3xl);
+    }
+
+    .category-content__title {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-title-large);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+      margin: 0;
+    }
+
+    /* Filters Sidebar */
+    .category-filters {
+      background-color: var(--color-bg-primary);
+      width: 184px;
+      flex-shrink: 0;
+    }
+
+    .category-filters__header {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .category-filters__title {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-body-large);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+      line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+
+    .category-filters__list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .category-filters__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) var(--spacing-sm);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      height: 60px;
+    }
+
+    .category-filters__item:hover {
+      background-color: var(--color-bg-secondary);
+    }
+
+    .category-filters__item-text {
+      font-family: var(--font-family-primary);
+      font-size: 14px;
+      font-weight: var(--font-weight-bold);
+      color: #373d43;
+      line-height: var(--line-height-relaxed);
+      text-align: left;
+      flex: 1;
+    }
+
+    .category-filters__item-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--color-text-primary);
+      flex-shrink: 0;
+    }
+
+    /* Products Grid */
+    .category-content__products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--spacing-2xl);
+      flex: 1;
+      min-width: 0;
+      width: 100%;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .category-content {
+        padding: var(--spacing-2xl) var(--spacing-lg);
+        gap: var(--spacing-2xl);
+      }
+
+      .category-filters {
+        width: 220px;
+      }
+
+      .category-content__products {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: var(--spacing-xl);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .category-content {
+        padding: var(--spacing-xl) var(--spacing-md);
+        flex-direction: column;
+        gap: var(--spacing-xl);
+      }
+
+      .category-filters {
+        width: 100%;
+      }
+
+      .category-content__title {
+        font-size: var(--font-size-title-section);
+      }
+
+      .category-content__products {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: var(--spacing-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .category-content__products {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: var(--spacing-md);
+      }
+    }
+  </style>
+</body>
+</html>
