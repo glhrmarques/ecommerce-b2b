@@ -1,0 +1,179 @@
+/**
+ * Footer Component Styles
+ * 
+ * A reusable footer component that includes:
+ * - Footer links organized in columns
+ * - Logo at the bottom
+ * - Contact information
+ */
+
+.footer {
+  background-color: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border-default);
+  width: 100%;
+  padding: var(--spacing-3xl) var(--spacing-4xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3xl);
+}
+
+/* ========================================
+   FOOTER CONTENT (Links Columns)
+   ======================================== */
+
+.footer__content {
+  display: flex;
+  gap: var(--spacing-xl);
+  justify-content: center;
+  max-width: 896px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Footer Column */
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  flex: 1;
+  min-width: 0;
+}
+
+.footer__column--contact {
+  max-width: 290px;
+}
+
+/* Footer Title */
+.footer__title {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-neutral-500);
+  margin: 0;
+  padding: var(--spacing-xs) 0;
+}
+
+/* Footer Links List */
+.footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.footer__links li {
+  margin: 0;
+}
+
+/* Footer Link */
+.footer__link {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-content-tertiary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-block;
+}
+
+.footer__link:hover {
+  color: var(--color-text-primary);
+}
+
+/* Footer Text (non-link) */
+.footer__text {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body-default);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--color-neutral-500);
+  white-space: pre-wrap;
+}
+
+/* ========================================
+   FOOTER BOTTOM (Logo)
+   ======================================== */
+
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: var(--spacing-md);
+}
+
+.footer__logo {
+  display: block;
+  width: 92px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.footer__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .footer {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+  }
+  
+  .footer__content {
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+  }
+  
+  .footer__column {
+    flex: 1 1 calc(50% - var(--spacing-lg));
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--spacing-xl) var(--spacing-md);
+    gap: var(--spacing-2xl);
+  }
+  
+  .footer__content {
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+  
+  .footer__column {
+    flex: 1 1 100%;
+  }
+  
+  .footer__column--contact {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  .footer__title {
+    font-size: var(--font-size-body-default);
+  }
+  
+  .footer__link {
+    font-size: var(--font-size-body-default);
+  }
+  
+  .footer__logo {
+    width: 70px;
+    height: 22px;
+  }
+}

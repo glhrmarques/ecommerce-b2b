@@ -21,6 +21,9 @@
   <!-- Product Card Component Styles -->
   <link rel="stylesheet" href="./components/product-card/product-card.css">
   
+  <!-- Footer Component Styles -->
+  <link rel="stylesheet" href="./components/footer/footer.css">
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -292,5 +295,57 @@
       }
     });
   </script>
+
+  <!-- Footer Component -->
+  <footer class="footer">
+    <!-- Footer Links Section -->
+    <div class="footer__content">
+      <!-- Institucional Column -->
+      <div class="footer__column">
+        <h3 class="footer__title">Institucional</h3>
+        <ul class="footer__links">
+          <li><a href="/sobre" class="footer__link">Sobre nós</a></li>
+          <li><a href="/blog" class="footer__link">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Privacidade e Termos Column -->
+      <div class="footer__column">
+        <h3 class="footer__title">Privacidade e termos</h3>
+        <ul class="footer__links">
+          <li><a href="/privacidade" class="footer__link">Política de Privacidade</a></li>
+          <li><a href="/cookies" class="footer__link">Política de Cookies</a></li>
+        </ul>
+      </div>
+
+      <!-- Suporte e Soluções Column -->
+      <div class="footer__column">
+        <h3 class="footer__title">Suporte e soluções</h3>
+        <ul class="footer__links">
+          <li><a href="/ajuda" class="footer__link">Central de ajuda</a></li>
+        </ul>
+      </div>
+
+      <!-- Fale Conosco Column -->
+      <div class="footer__column footer__column--contact">
+        <h3 class="footer__title">Fale conosco</h3>
+        <ul class="footer__links">
+          <li><a href="tel:1193065-9533" class="footer__link">SAC: (11) 93065-9533</a></li>
+          <li><a href="mailto:atendimento@.com.br" class="footer__link">atendimento@.com.br</a></li>
+          <li class="footer__text">Atendimento de Segunda a Sexta-Feira (08h00 às 18h00)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom - Logo -->
+    <div class="footer__bottom">
+      <a href="/" class="footer__logo" aria-label="Taiff - Home">
+        <img src="assets/images/bright-logo.png" alt="Bright" />
+      </a>
+    </div>
+  </footer>
+
+  <!-- Footer JavaScript -->
+  <script src="components/footer/footer.js"></script>
 </body>
 </html>
