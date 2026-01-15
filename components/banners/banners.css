@@ -1,0 +1,203 @@
+/**
+ * Banners Component Styles
+ * 
+ * A slideshow/carousel component for promotional banners
+ */
+
+.banners {
+  position: relative;
+  width: 100%;
+  height: 332px;
+  overflow: hidden;
+  background-color: var(--color-bg-primary);
+}
+
+/* ========================================
+   SLIDESHOW CONTAINER
+   ======================================== */
+
+.banners__slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.banners__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.banners__slide--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.banners__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ========================================
+   NAVIGATION DOTS
+   ======================================== */
+
+.banners__dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.banners__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.banners__dot:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+.banners__dot--active {
+  background-color: var(--color-neutral-100);
+  width: 32px;
+  border-radius: 6px;
+}
+
+/* ========================================
+   ARROW NAVIGATION
+   ======================================== */
+
+.banners__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.banners__arrow:hover {
+  background-color: var(--color-neutral-100);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.banners__arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.banners__arrow svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-content-primary);
+}
+
+.banners__arrow--prev {
+  left: 24px;
+}
+
+.banners__arrow--next {
+  right: 24px;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .banners {
+    height: 280px;
+  }
+
+  .banners__arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .banners__arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .banners__arrow--prev {
+    left: 16px;
+  }
+
+  .banners__arrow--next {
+    right: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banners {
+    height: 240px;
+  }
+
+  .banners__dots {
+    bottom: 16px;
+    gap: 8px;
+  }
+
+  .banners__dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .banners__dot--active {
+    width: 24px;
+  }
+
+  .banners__arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .banners__arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .banners__arrow--prev {
+    left: 12px;
+  }
+
+  .banners__arrow--next {
+    right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banners {
+    height: 200px;
+  }
+
+  .banners__arrow {
+    display: none;
+  }
+}
