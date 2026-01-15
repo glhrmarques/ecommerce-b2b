@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Taiff - Categoria de Produtos">
+  <title>Taiff - Categoria</title>
+  
+  <!-- Design Tokens -->
+  <link rel="stylesheet" href="./styles/tokens.css">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="./styles/base.css">
+  
+  <!-- Header Component Styles -->
+  <link rel="stylesheet" href="./components/header/header.css">
+  
+  <!-- Banners Component Styles -->
+  <link rel="stylesheet" href="./components/banners/banners.css">
+  
+  <!-- Footer Component Styles -->
+  <link rel="stylesheet" href="./components/footer/footer.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header Component -->
+  <header class="header">
+    <!-- Top Bar: Logo, Search, Auth -->
+    <div class="header__top">
+      <!-- Logo -->
+      <a href="/" class="header__logo" aria-label="Taiff - Home">
+        <img src="./assets/images/bright-logo.png" alt="Bright" />
+      </a>
+
+      <!-- Search Bar -->
+      <form class="header__search" role="search">
+        <div class="header__search-container">
+          <div class="header__search-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input 
+            type="search" 
+            class="header__search-input" 
+            placeholder="Busque por produtos, marcas e muito mais..."
+            aria-label="Buscar produtos"
+          />
+        </div>
+      </form>
+
+      <!-- Auth Buttons -->
+      <div class="header__auth">
+        <a href="/login" class="header__btn header__btn--secondary">
+          Entrar
+        </a>
+        <a href="/register" class="header__btn header__btn--primary">
+          Criar conta
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="header__nav" role="navigation" aria-label="Menu principal">
+      <ul class="header__nav-list">
+        <li class="header__nav-item">
+          <a href="./category.html" class="header__nav-link" data-nav-item="produtos">
+            Todos os produtos
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="./category.html" class="header__nav-link" data-nav-item="novidades">
+            Novidades
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="./category.html" class="header__nav-link" data-nav-item="marcas">
+            Marcas
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="./category.html" class="header__nav-link" data-nav-item="promocoes">
+            Promoções
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Banner Component -->
+    <div class="banners">
+      <div class="banners__container">
+        <!-- Banner Slides -->
+        <div class="banners__slides">
+          <div class="banners__slide banners__slide--active">
+            <img 
+              src="./assets/images/Banner-Institucional-C05-v2.jpg" 
+              alt="Banner Institucional" 
+              class="banners__image"
+            />
+          </div>
+          <div class="banners__slide">
+            <img 
+              src="./assets/images/Banner-Institucional-TANK.jpg" 
+              alt="Banner Institucional Tank" 
+              class="banners__image"
+            />
+          </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="banners__arrow banners__arrow--prev" aria-label="Slide anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button class="banners__arrow banners__arrow--next" aria-label="Próximo slide">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <!-- Indicators -->
+        <div class="banners__indicators">
+          <button class="banners__indicator banners__indicator--active" data-slide="0" aria-label="Ir para slide 1"></button>
+          <button class="banners__indicator" data-slide="1" aria-label="Ir para slide 2"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Content Area -->
+    <div class="category-content">
+      <div class="category-content__header">
+        <h1 class="category-content__title" id="category-title">Todos os produtos</h1>
+      </div>
+      
+      <!-- Products will be loaded here dynamically -->
+      <div class="category-content__products" id="products-container">
+        <!-- Product grid will be populated by JavaScript -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Component -->
+  <footer class="footer">
+    <!-- Footer Links Section -->
+    <div class="footer__content">
+      <!-- Institucional Column -->
+      <div class="footer__column">
+        <h3 class="footer__title">Institucional</h3>
+        <ul class="footer__links">
+          <li><a href="/sobre" class="footer__link">Sobre nós</a></li>
+          <li><a href="/blog" class="footer__link">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Privacidade e Termos Column -->
+      <div class="footer__column">
+        <h3 class="footer__title">Privacidade e termos</h3>
+        <ul class="footer__links">
+          <li><a href="/privacidade" class="footer__link">Política de Privacidade</a></li>
+          <li><a href="/cookies" class="footer__link">Política de Cookies</a></li>
+        </ul>
+      </div>
+
+      <!-- Suporte e Soluções Column -->
+      <div class="footer__column">
+        <h3 class="footer__title">Suporte e soluções</h3>
+        <ul class="footer__links">
+          <li><a href="/ajuda" class="footer__link">Central de ajuda</a></li>
+        </ul>
+      </div>
+
+      <!-- Fale Conosco Column -->
+      <div class="footer__column footer__column--contact">
+        <h3 class="footer__title">Fale conosco</h3>
+        <ul class="footer__links">
+          <li><a href="tel:1193065-9533" class="footer__link">SAC: (11) 93065-9533</a></li>
+          <li><a href="mailto:atendimento@.com.br" class="footer__link">atendimento@.com.br</a></li>
+          <li class="footer__text">Atendimento de Segunda a Sexta-Feira (08h00 às 18h00)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom - Logo -->
+    <div class="footer__bottom">
+      <a href="/" class="footer__logo" aria-label="Taiff - Home">
+        <img src="assets/images/bright-logo.png" alt="Bright" />
+      </a>
+    </div>
+  </footer>
+
+  <!-- Component Scripts -->
+  <script src="components/header/header.js"></script>
+  <script src="components/banners/banners.js"></script>
+  <script src="components/footer/footer.js"></script>
+
+  <!-- Category Page Script -->
+  <script>
+    // Get category type from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryType = urlParams.get('type') || 'produtos';
+
+    // Update page title based on category
+    const categoryTitles = {
+      'produtos': 'Todos os produtos',
+      'novidades': 'Novidades',
+      'marcas': 'Marcas',
+      'promocoes': 'Promoções'
+    };
+
+    // Update the title
+    const titleElement = document.getElementById('category-title');
+    if (titleElement && categoryTitles[categoryType]) {
+      titleElement.textContent = categoryTitles[categoryType];
+      document.title = `Taiff - ${categoryTitles[categoryType]}`;
+    }
+
+    // Highlight active navigation item
+    const navLinks = document.querySelectorAll('.header__nav-link');
+    navLinks.forEach(link => {
+      const navItem = link.getAttribute('data-nav-item');
+      if (navItem === categoryType) {
+        link.classList.add('header__nav-link--active');
+      }
+    });
+
+    // Initialize banners
+    initBanners({
+      autoPlay: true,
+      autoPlayInterval: 5000
+    });
+
+    // TODO: Load products based on category type
+    console.log('Category page loaded:', categoryType);
+  </script>
+
+  <style>
+    /* Category Page Specific Styles */
+    .main {
+      min-height: calc(100vh - 200px);
+      background-color: var(--color-bg-primary);
+    }
+
+    .category-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: var(--spacing-4xl) var(--spacing-4xl);
+    }
+
+    .category-content__header {
+      margin-bottom: var(--spacing-3xl);
+    }
+
+    .category-content__title {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-title-large);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+      margin: 0;
+    }
+
+    .category-content__products {
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-neutral-500);
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-body-large);
+    }
+
+    .category-content__products:empty::after {
+      content: 'Produtos serão carregados aqui...';
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .category-content {
+        padding: var(--spacing-2xl) var(--spacing-lg);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .category-content {
+        padding: var(--spacing-xl) var(--spacing-md);
+      }
+
+      .category-content__title {
+        font-size: var(--font-size-title-section);
+      }
+    }
+  </style>
+</body>
+</html>
