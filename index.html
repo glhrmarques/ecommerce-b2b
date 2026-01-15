@@ -18,6 +18,9 @@
   <!-- Banners Component Styles -->
   <link rel="stylesheet" href="./components/banners/banners.css">
   
+  <!-- Product Card Component Styles -->
+  <link rel="stylesheet" href="./components/product-card/product-card.css">
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,12 +133,136 @@
         </svg>
       </button>
     </section>
+
+    <!-- Product Carousel Section -->
+    <section class="product-carousel">
+      <div class="product-carousel__header">
+        <div class="product-carousel__title-group">
+          <h2 class="product-carousel__title">Lançamentos que você vai gostar</h2>
+        </div>
+        <div class="product-carousel__arrows">
+          <button class="product-carousel__arrow product-carousel__arrow--prev" aria-label="Produtos anteriores">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button class="product-carousel__arrow product-carousel__arrow--next" aria-label="Próximos produtos">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="product-carousel__grid">
+        <!-- Product Card 1 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-1.jpg" 
+              alt="Secador de Cabelo Black Íon 2000W" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7896046700584</span>
+            <h3 class="product-card__name">Cadeira gamer Preta</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 2 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-2.jpg" 
+              alt="Escova Secadora Easy Lilás" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7897982208271</span>
+            <h3 class="product-card__name">Monitor Led Full Hd 27’’ Office</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 3 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-3.jpg" 
+              alt="Modelador Curves Automatic Turbo Íon" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 789798220520-1</span>
+            <h3 class="product-card__name">Mouse USB Amarelo</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 4 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-4.jpg" 
+              alt="Chapa Look 450 230ºC" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 7897982207397</span>
+            <h3 class="product-card__name">Fone de Ouvido Sem Fio Blacksound II</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+
+        <!-- Product Card 5 -->
+        <article class="product-card">
+          <div class="product-card__image-container">
+            <img 
+              src="./assets/images/productcard-5.jpg" 
+              alt="Difusor Taiff Curves" 
+              class="product-card__image"
+            />
+          </div>
+          
+          <div class="product-card__info">
+            <span class="product-card__ean">EAN 789798220875</span>
+            <h3 class="product-card__name">Placa Mãe H55 Bright</h3>
+          </div>
+          
+          <button class="product-card__button">
+            Ver preço
+          </button>
+        </article>
+      </div>
+    </section>
   </main>
 
   <!-- Component Scripts -->
   <script type="module">
     import { initHeader } from './components/header/header.js';
     import { initBanners } from './components/banners/banners.js';
+    import { initProductCards } from './components/product-card/product-card.js';
     
     // Initialize the header with configuration
     initHeader({
@@ -151,6 +278,18 @@
     initBanners({
       autoPlay: true,
       autoPlayInterval: 5000 // Change slides every 5 seconds
+    });
+
+    // Initialize product cards with interaction handlers
+    initProductCards({
+      onClick: (data) => {
+        console.log('Product card clicked:', data.productName);
+        // You can implement navigation to product detail page here
+      },
+      onButtonClick: (data) => {
+        console.log('View price clicked for:', data.productName);
+        // You can implement price reveal or modal here
+      }
     });
   </script>
 </body>
