@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bright - Login">
+  <title>Entrar - Bright</title>
+  
+  <!-- Design Tokens -->
+  <link rel="stylesheet" href="./styles/tokens.css">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="./styles/base.css">
+  
+  <!-- Login Page Styles -->
+  <link rel="stylesheet" href="./styles/login.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+  <!-- Login Header -->
+  <header class="login-header">
+    <a href="./index.html" class="login-header__back" aria-label="Voltar para página inicial">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+    </a>
+    
+    <a href="./index.html" class="login-header__logo" aria-label="Bright - Home">
+      <img src="./assets/images/bright-logo.png" alt="Bright" />
+    </a>
+    
+    <a href="#" class="login-header__help">
+      Ajuda
+    </a>
+  </header>
+
+  <!-- Main Content -->
+  <main class="login-content">
+    <div class="login-form-container">
+      <!-- Title Section -->
+      <div class="login-form__header">
+        <h1 class="login-form__title">Olá de novo!</h1>
+        <p class="login-form__subtitle">
+          Não tem conta? <a href="./register.html" class="login-form__register-link">Cadastre-se</a>
+        </p>
+      </div>
+
+      <!-- Login Form -->
+      <form class="login-form" id="loginForm">
+        <!-- Email Input -->
+        <div class="login-form__field">
+          <label for="email" class="login-form__label">E-mail de acesso</label>
+          <div class="login-form__input-container">
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="login-form__input"
+              autocomplete="email"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Password Input -->
+        <div class="login-form__field">
+          <label for="password" class="login-form__label">Senha</label>
+          <div class="login-form__input-container login-form__input-container--password">
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              class="login-form__input"
+              autocomplete="current-password"
+              required
+            />
+            <button 
+              type="button" 
+              class="login-form__toggle-password" 
+              aria-label="Mostrar senha"
+              data-show="false"
+            >
+              <!-- Eye Slash Icon (password hidden) -->
+              <svg class="login-form__eye-icon login-form__eye-icon--hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+              </svg>
+              <!-- Eye Icon (password visible) -->
+              <svg class="login-form__eye-icon login-form__eye-icon--visible" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Submit Button & Forgot Password -->
+        <div class="login-form__actions">
+          <button type="submit" class="login-form__submit" id="submitBtn" disabled>
+            Entrar
+          </button>
+          
+          <a href="#" class="login-form__forgot-password">
+            Esqueci minha senha
+          </a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    // Login Form Functionality
+    (function() {
+      const form = document.getElementById('loginForm');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const submitBtn = document.getElementById('submitBtn');
+      const togglePasswordBtn = document.querySelector('.login-form__toggle-password');
+
+      // Validate form and enable/disable submit button
+      function validateForm() {
+        const isEmailValid = emailInput.value.trim() !== '' && emailInput.validity.valid;
+        const isPasswordValid = passwordInput.value.trim() !== '';
+        
+        if (isEmailValid && isPasswordValid) {
+          submitBtn.disabled = false;
+        } else {
+          submitBtn.disabled = true;
+        }
+      }
+
+      // Toggle password visibility
+      function togglePassword() {
+        const isShowing = togglePasswordBtn.getAttribute('data-show') === 'true';
+        
+        if (isShowing) {
+          passwordInput.type = 'password';
+          togglePasswordBtn.setAttribute('data-show', 'false');
+          togglePasswordBtn.setAttribute('aria-label', 'Mostrar senha');
+        } else {
+          passwordInput.type = 'text';
+          togglePasswordBtn.setAttribute('data-show', 'true');
+          togglePasswordBtn.setAttribute('aria-label', 'Ocultar senha');
+        }
+      }
+
+      // Event listeners
+      emailInput.addEventListener('input', validateForm);
+      passwordInput.addEventListener('input', validateForm);
+      togglePasswordBtn.addEventListener('click', togglePassword);
+
+      // Form submission
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (!submitBtn.disabled) {
+          // Here you would typically send the login request
+          console.log('Login submitted:', {
+            email: emailInput.value,
+            password: passwordInput.value
+          });
+          
+          // For demo purposes, redirect to home
+          // window.location.href = './index.html';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

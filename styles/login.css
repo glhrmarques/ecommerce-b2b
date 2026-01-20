@@ -1,0 +1,350 @@
+/**
+ * Login Page Styles
+ * 
+ * Styles for the login/authentication page
+ */
+
+/* ========================================
+   Login Page Layout
+   ======================================== */
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg-primary);
+}
+
+/* ========================================
+   Login Header
+   ======================================== */
+
+.login-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  padding: 0 96px;
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border-default);
+  position: relative;
+}
+
+.login-header__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: var(--radius-full);
+  color: var(--color-content-primary);
+  transition: background-color 0.2s ease;
+}
+
+.login-header__back:hover {
+  background-color: var(--color-bg-tertiary);
+}
+
+.login-header__back svg {
+  width: 24px;
+  height: 24px;
+}
+
+.login-header__logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.login-header__logo img {
+  height: 34px;
+  width: auto;
+}
+
+.login-header__help {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-content-primary);
+  transition: opacity 0.2s ease;
+}
+
+.login-header__help:hover {
+  opacity: 0.7;
+}
+
+/* ========================================
+   Login Content
+   ======================================== */
+
+.login-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 96px;
+  overflow-y: auto;
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 532px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ========================================
+   Form Header
+   ======================================== */
+
+.login-form__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}
+
+.login-form__title {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-title-section);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-loose);
+  color: var(--color-content-primary);
+}
+
+.login-form__subtitle {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--color-content-primary);
+}
+
+.login-form__register-link {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  color: #484848;
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.login-form__register-link:hover {
+  opacity: 0.7;
+}
+
+/* ========================================
+   Login Form
+   ======================================== */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.login-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-form__label {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-content-primary);
+}
+
+.login-form__input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 48px;
+  padding: 12px;
+  border: 1px solid var(--color-neutral-500);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-form__input-container:focus-within {
+  border-color: var(--color-content-primary);
+  box-shadow: 0 0 0 1px var(--color-content-primary);
+}
+
+.login-form__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-content-primary);
+}
+
+.login-form__input::placeholder {
+  color: var(--color-neutral-500);
+}
+
+.login-form__input:focus {
+  outline: none;
+}
+
+/* Password Toggle Button */
+.login-form__toggle-password {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-content-primary);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.login-form__toggle-password:hover {
+  opacity: 0.7;
+}
+
+.login-form__toggle-password:focus {
+  outline: none;
+}
+
+.login-form__eye-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Toggle visibility of eye icons based on data-show attribute */
+.login-form__toggle-password[data-show="false"] .login-form__eye-icon--hidden {
+  display: block;
+}
+
+.login-form__toggle-password[data-show="false"] .login-form__eye-icon--visible {
+  display: none;
+}
+
+.login-form__toggle-password[data-show="true"] .login-form__eye-icon--hidden {
+  display: none;
+}
+
+.login-form__toggle-password[data-show="true"] .login-form__eye-icon--visible {
+  display: block;
+}
+
+/* ========================================
+   Form Actions
+   ======================================== */
+
+.login-form__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.login-form__submit {
+  width: 100%;
+  height: 48px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-relaxed);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Disabled State */
+.login-form__submit:disabled {
+  background-color: var(--color-neutral-300);
+  color: var(--color-neutral-500);
+  cursor: not-allowed;
+}
+
+/* Enabled State */
+.login-form__submit:not(:disabled) {
+  background-color: var(--color-neutral-900);
+  color: var(--color-neutral-100);
+}
+
+.login-form__submit:not(:disabled):hover {
+  background-color: var(--color-content-primary);
+}
+
+.login-form__submit:not(:disabled):focus {
+  outline: 2px solid var(--color-content-primary);
+  outline-offset: 2px;
+}
+
+/* Forgot Password Link */
+.login-form__forgot-password {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-large);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-content-primary);
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.login-form__forgot-password:hover {
+  opacity: 0.7;
+}
+
+/* ========================================
+   Responsive Styles
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .login-header {
+    padding: 0 48px;
+  }
+  
+  .login-content {
+    padding: 24px 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-header {
+    padding: 0 24px;
+  }
+  
+  .login-content {
+    padding: 24px;
+  }
+  
+  .login-form-container {
+    gap: 32px;
+  }
+  
+  .login-form__title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-header {
+    padding: 0 16px;
+  }
+  
+  .login-content {
+    padding: 16px;
+  }
+  
+  .login-form {
+    gap: 24px;
+  }
+}
