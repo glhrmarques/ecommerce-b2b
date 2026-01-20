@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bright - Dados Cadastrais">
+  <title>Dados Cadastrais - Bright</title>
+  
+  <!-- Design Tokens -->
+  <link rel="stylesheet" href="./styles/tokens.css">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="./styles/base.css">
+  
+  <!-- Login/Auth Page Styles -->
+  <link rel="stylesheet" href="./styles/login.css">
+  
+  <!-- Sign-up Steps Styles -->
+  <link rel="stylesheet" href="./styles/sign-up-steps.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+  <!-- Header -->
+  <header class="login-header">
+    <a href="./sign-up.html" class="login-header__back" aria-label="Voltar para etapa anterior">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+    </a>
+    
+    <a href="./index.html" class="login-header__logo" aria-label="Bright - Home">
+      <img src="./assets/images/bright-logo.png" alt="Bright" />
+    </a>
+    
+    <a href="#" class="login-header__help">
+      Ajuda
+    </a>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="signup-progress">
+    <div class="signup-progress__bar signup-progress__bar--active"></div>
+    <div class="signup-progress__bar"></div>
+    <div class="signup-progress__bar"></div>
+    <div class="signup-progress__bar"></div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="login-content">
+    <div class="login-form-container">
+      <!-- Title Section -->
+      <h1 class="login-form__title">Dados cadastrais</h1>
+
+      <!-- Company Data Sections -->
+      <div class="signup-data">
+        <!-- Company Info Section -->
+        <div class="signup-data__section signup-data__section--border">
+          <div class="signup-data__icon">
+            <!-- Person Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="signup-data__content">
+            <div class="signup-data__group">
+              <p class="signup-data__label">Razão Social</p>
+              <p class="signup-data__value">SUPERMERCADO JJJ 338.120</p>
+            </div>
+            <div class="signup-data__group">
+              <p class="signup-data__label">Nome fantasia</p>
+              <p class="signup-data__value">Supermercado JJJ</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address Section -->
+        <div class="signup-data__section">
+          <div class="signup-data__icon">
+            <!-- Location Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="signup-data__content">
+            <div class="signup-data__group">
+              <p class="signup-data__label">Endereço de entrega</p>
+              <p class="signup-data__value">R. Harry Dannenberg - 34 - Vila Carmosina, São Paulo - SP - 08270-210</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Continue Button -->
+      <div class="login-form__actions">
+        <a href="#" class="login-form__submit login-form__submit--enabled" id="continueBtn">
+          Continuar
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // For demo purposes - clicking "Continuar" could navigate to next step
+    document.getElementById('continueBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      // Navigate to next step (to be implemented)
+      console.log('Proceeding to next step...');
+      // window.location.href = './sign-up-step3.html';
+    });
+  </script>
+</body>
+</html>
