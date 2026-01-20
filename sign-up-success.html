@@ -28,8 +28,11 @@
   <div class="signup-loading" id="loadingOverlay">
     <div class="signup-loading__content">
       <div class="signup-loading__text-container">
-        <p class="signup-loading__text signup-loading__text--top" id="loadingTextTop">Salvando informações</p>
-        <p class="signup-loading__text signup-loading__text--bottom" id="loadingTextBottom">Criando sua conta</p>
+        <p class="signup-loading__text signup-loading__text--main">
+          <span class="text-wrapper">
+            <span class="letters" id="loadingText">Salvando informações</span>
+          </span>
+        </p>
       </div>
     </div>
     <div class="signup-loading__sidebar"></div>
@@ -92,60 +95,88 @@
     </main>
   </div>
 
+  <!-- Anime.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
   <script>
-    // Loading Animation Sequence
+    // Loading Animation Sequence with Anime.js
     (function() {
       const loadingOverlay = document.getElementById('loadingOverlay');
       const successContent = document.getElementById('successContent');
-      const loadingTextTop = document.getElementById('loadingTextTop');
-      const loadingTextBottom = document.getElementById('loadingTextBottom');
+      const loadingText = document.getElementById('loadingText');
 
       const messages = [
-        { top: 'Salvando informações', bottom: 'Criando sua conta' },
-        { top: 'Criando sua conta', bottom: 'Realizando análise de crédito...' },
-        { top: 'Realizando análise de crédito...', bottom: '' }
+        'Salvando informações',
+        'Criando sua conta',
+        'Realizando análise de crédito'
       ];
 
       let currentIndex = 0;
 
-      function updateMessages() {
-        if (currentIndex < messages.length) {
-          loadingTextTop.style.opacity = '0';
-          loadingTextBottom.style.opacity = '0';
-          
-          setTimeout(() => {
-            loadingTextTop.textContent = messages[currentIndex].top;
-            loadingTextBottom.textContent = messages[currentIndex].bottom;
-            loadingTextTop.style.opacity = '1';
-            if (messages[currentIndex].bottom) {
-              loadingTextBottom.style.opacity = '0.5';
-            }
-            currentIndex++;
-            
-            if (currentIndex < messages.length) {
-              setTimeout(updateMessages, 1500);
-            } else {
-              // Show success after last message
-              setTimeout(showSuccess, 1500);
-            }
-          }, 300);
+      // Wrap each letter in a span
+      function wrapLetters(element) {
+        const text = element.textContent;
+        element.innerHTML = text.replace(/\S/g, "<span class='letter'>$&</span>");
+      }
+
+      // Animate text in (letters appear from bottom)
+      function animateIn(callback) {
+        wrapLetters(loadingText);
+        anime({
+          targets: loadingText.querySelectorAll('.letter'),
+          translateY: [100, 0],
+          opacity: [0, 1],
+          easing: "easeOutExpo",
+          duration: 1000,
+          delay: (el, i) => 20 * i,
+          complete: callback
+        });
+      }
+
+      // Animate text out (letters disappear to top)
+      function animateOut(callback) {
+        anime({
+          targets: loadingText.querySelectorAll('.letter'),
+          translateY: [0, -100],
+          opacity: [1, 0],
+          easing: "easeInExpo",
+          duration: 500,
+          delay: (el, i) => 15 * i,
+          complete: callback
+        });
+      }
+
+      function showNextMessage() {
+        currentIndex++;
+        
+        if (currentIndex >= messages.length) {
+          // All messages done, show success
+          setTimeout(showSuccess, 300);
+          return;
         }
+
+        // Animate out current text
+        animateOut(function() {
+          // Update text content
+          loadingText.textContent = messages[currentIndex];
+          
+          // Animate in new text
+          animateIn(function() {
+            // Wait then show next message
+            setTimeout(showNextMessage, 300);
+          });
+        });
       }
 
       function showSuccess() {
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => {
-          loadingOverlay.style.display = 'none';
-          successContent.style.display = 'flex';
-          successContent.style.opacity = '0';
-          setTimeout(() => {
-            successContent.style.opacity = '1';
-          }, 50);
-        }, 500);
+        loadingOverlay.style.display = 'none';
+        successContent.style.display = 'flex';
       }
 
-      // Start animation
-      setTimeout(updateMessages, 1000);
+      // Start: Animate first message
+      animateIn(function() {
+        setTimeout(showNextMessage, 300);
+      });
     })();
   </script>
 </body>

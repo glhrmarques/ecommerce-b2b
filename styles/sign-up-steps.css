@@ -312,15 +312,24 @@
   transition: opacity 0.3s ease;
 }
 
-.signup-loading__text--top {
-  font-size: 40px;
+.signup-loading__text--main {
+  font-size: 48px;
   line-height: 1;
 }
 
-.signup-loading__text--bottom {
-  font-size: 48px;
+.signup-loading__text .text-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.signup-loading__text .letters {
+  display: inline-block;
+}
+
+.signup-loading__text .letter {
+  display: inline-block;
   line-height: 1;
-  opacity: 0.5;
 }
 
 .signup-loading__sidebar {
