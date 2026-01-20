@@ -304,6 +304,88 @@
 }
 
 /* ========================================
+   Sign-up Form Checkbox
+   ======================================== */
+
+.signup-form__checkbox-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.signup-form__checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.signup-form__checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.signup-form__checkbox-custom {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--color-neutral-500);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-primary);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  position: relative;
+}
+
+.signup-form__checkbox:checked + .signup-form__checkbox-custom {
+  background-color: var(--color-content-primary);
+  border-color: var(--color-content-primary);
+}
+
+.signup-form__checkbox:checked + .signup-form__checkbox-custom::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 11px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.signup-form__checkbox:focus + .signup-form__checkbox-custom {
+  box-shadow: 0 0 0 2px var(--color-neutral-300);
+}
+
+.signup-form__checkbox-text {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body-default);
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  color: var(--color-content-primary);
+}
+
+.signup-form__link {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-content-primary);
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.signup-form__link:hover {
+  opacity: 0.7;
+}
+
+.signup-form__spacing {
+  height: 32px;
+  width: 100%;
+  background-color: var(--color-bg-primary);
+}
+
+/* ========================================
    Responsive Styles
    ======================================== */
 

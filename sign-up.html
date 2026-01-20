@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bright - Cadastre-se">
+  <title>Cadastre-se - Bright</title>
+  
+  <!-- Design Tokens -->
+  <link rel="stylesheet" href="./styles/tokens.css">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="./styles/base.css">
+  
+  <!-- Login/Auth Page Styles -->
+  <link rel="stylesheet" href="./styles/login.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+  <!-- Sign-up Header -->
+  <header class="login-header">
+    <a href="./index.html" class="login-header__back" aria-label="Voltar para página inicial">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+    </a>
+    
+    <a href="./index.html" class="login-header__logo" aria-label="Bright - Home">
+      <img src="./assets/images/bright-logo.png" alt="Bright" />
+    </a>
+    
+    <a href="#" class="login-header__help">
+      Ajuda
+    </a>
+  </header>
+
+  <!-- Main Content -->
+  <main class="login-content">
+    <div class="login-form-container">
+      <!-- Title Section -->
+      <div class="login-form__header">
+        <h1 class="login-form__title">Cadastre-se</h1>
+        <p class="login-form__subtitle">
+          Já tem conta? <a href="./login.html" class="login-form__register-link">Acesse sua conta</a>
+        </p>
+      </div>
+
+      <!-- Sign-up Form -->
+      <form class="login-form" id="signupForm">
+        <!-- CNPJ Input -->
+        <div class="login-form__field">
+          <label for="cnpj" class="login-form__label">CNPJ</label>
+          <div class="login-form__input-container">
+            <input 
+              type="text" 
+              id="cnpj" 
+              name="cnpj" 
+              class="login-form__input"
+              placeholder="00.000.000/0001-00"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <!-- Contact Name Input -->
+        <div class="login-form__field">
+          <label for="contactName" class="login-form__label">Nome de contato</label>
+          <div class="login-form__input-container">
+            <input 
+              type="text" 
+              id="contactName" 
+              name="contactName" 
+              class="login-form__input"
+              placeholder="Seu nome"
+              autocomplete="name"
+            />
+          </div>
+        </div>
+
+        <!-- Email Input -->
+        <div class="login-form__field">
+          <label for="email" class="login-form__label">E-mail de acesso</label>
+          <div class="login-form__input-container">
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="login-form__input"
+              placeholder="email@suaempresa.com.br"
+              autocomplete="email"
+            />
+          </div>
+        </div>
+
+        <!-- Confirm Email Input -->
+        <div class="login-form__field">
+          <label for="confirmEmail" class="login-form__label">Confirmar e-mail</label>
+          <div class="login-form__input-container">
+            <input 
+              type="email" 
+              id="confirmEmail" 
+              name="confirmEmail" 
+              class="login-form__input"
+              placeholder="email@suaempresa.com.br"
+              autocomplete="email"
+            />
+          </div>
+        </div>
+
+        <!-- Terms Checkbox -->
+        <div class="signup-form__checkbox-field">
+          <label class="signup-form__checkbox-label">
+            <input 
+              type="checkbox" 
+              id="termsAccepted" 
+              name="termsAccepted" 
+              class="signup-form__checkbox"
+            />
+            <span class="signup-form__checkbox-custom"></span>
+            <span class="signup-form__checkbox-text">
+              Aceito os <a href="#" class="signup-form__link">Termos de uso</a> e <a href="#" class="signup-form__link">Política de privacidade</a>
+            </span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="login-form__actions">
+          <button type="submit" class="login-form__submit" id="submitBtn" disabled>
+            Continuar
+          </button>
+        </div>
+      </form>
+      
+      <!-- Bottom Spacing -->
+      <div class="signup-form__spacing"></div>
+    </div>
+  </main>
+
+  <script>
+    // Sign-up Form Functionality
+    (function() {
+      const form = document.getElementById('signupForm');
+      const cnpjInput = document.getElementById('cnpj');
+      const contactNameInput = document.getElementById('contactName');
+      const emailInput = document.getElementById('email');
+      const confirmEmailInput = document.getElementById('confirmEmail');
+      const termsCheckbox = document.getElementById('termsAccepted');
+      const submitBtn = document.getElementById('submitBtn');
+
+      // CNPJ mask function
+      function formatCNPJ(value) {
+        // Remove all non-digits
+        const digits = value.replace(/\D/g, '');
+        
+        // Apply mask: 00.000.000/0001-00
+        if (digits.length <= 2) {
+          return digits;
+        } else if (digits.length <= 5) {
+          return digits.slice(0, 2) + '.' + digits.slice(2);
+        } else if (digits.length <= 8) {
+          return digits.slice(0, 2) + '.' + digits.slice(2, 5) + '.' + digits.slice(5);
+        } else if (digits.length <= 12) {
+          return digits.slice(0, 2) + '.' + digits.slice(2, 5) + '.' + digits.slice(5, 8) + '/' + digits.slice(8);
+        } else {
+          return digits.slice(0, 2) + '.' + digits.slice(2, 5) + '.' + digits.slice(5, 8) + '/' + digits.slice(8, 12) + '-' + digits.slice(12, 14);
+        }
+      }
+
+      // Apply CNPJ mask on input
+      cnpjInput.addEventListener('input', function(e) {
+        const cursorPosition = e.target.selectionStart;
+        const oldLength = e.target.value.length;
+        e.target.value = formatCNPJ(e.target.value);
+        const newLength = e.target.value.length;
+        
+        // Adjust cursor position
+        const newPosition = cursorPosition + (newLength - oldLength);
+        e.target.setSelectionRange(newPosition, newPosition);
+        
+        validateForm();
+      });
+
+      // Validate form and enable/disable submit button
+      function validateForm() {
+        const isCnpjFilled = cnpjInput.value.trim() !== '';
+        const isNameFilled = contactNameInput.value.trim() !== '';
+        const isEmailFilled = emailInput.value.trim() !== '' && emailInput.validity.valid;
+        const isConfirmEmailFilled = confirmEmailInput.value.trim() !== '' && confirmEmailInput.validity.valid;
+        const isTermsAccepted = termsCheckbox.checked;
+        
+        if (isCnpjFilled && isNameFilled && isEmailFilled && isConfirmEmailFilled && isTermsAccepted) {
+          submitBtn.disabled = false;
+        } else {
+          submitBtn.disabled = true;
+        }
+      }
+
+      // Event listeners
+      contactNameInput.addEventListener('input', validateForm);
+      emailInput.addEventListener('input', validateForm);
+      confirmEmailInput.addEventListener('input', validateForm);
+      termsCheckbox.addEventListener('change', validateForm);
+
+      // Form submission
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (!submitBtn.disabled) {
+          // Here you would typically send the registration request
+          console.log('Sign-up submitted:', {
+            cnpj: cnpjInput.value,
+            contactName: contactNameInput.value,
+            email: emailInput.value,
+            confirmEmail: confirmEmailInput.value,
+            termsAccepted: termsCheckbox.checked
+          });
+          
+          // For demo purposes, you could redirect to a success page
+          // window.location.href = './index.html';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
