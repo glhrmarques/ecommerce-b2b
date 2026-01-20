@@ -276,6 +276,193 @@
 }
 
 /* ========================================
+   Loading Animation Styles
+   ======================================== */
+
+.signup-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: var(--color-bg-primary);
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+.signup-loading__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 96px;
+}
+
+.signup-loading__text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.signup-loading__text {
+  font-family: var(--font-family-secondary);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-content-primary);
+  transition: opacity 0.3s ease;
+}
+
+.signup-loading__text--top {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.signup-loading__text--bottom {
+  font-size: 48px;
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.signup-loading__sidebar {
+  width: 33%;
+  background-color: #4a4a4a;
+}
+
+/* ========================================
+   Success Page Styles
+   ======================================== */
+
+.signup-success {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg-primary);
+  transition: opacity 0.5s ease;
+}
+
+.signup-success__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 96px;
+}
+
+.signup-success__container {
+  width: 100%;
+  max-width: 528px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.signup-success__card {
+  width: 100%;
+  border: 1px solid var(--color-neutral-300);
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #d6d6d6;
+}
+
+.signup-success__card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-neutral-300);
+}
+
+.signup-success__card-placeholder {
+  width: 80px;
+  height: 24px;
+  background-color: var(--color-neutral-300);
+  border-radius: 4px;
+}
+
+.signup-success__card-badge {
+  padding: 6px 12px;
+  background-color: #fef3c7;
+  border-radius: 16px;
+  font-family: var(--font-family-secondary);
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-content-primary);
+}
+
+.signup-success__card-account {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  font-family: var(--font-family-secondary);
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-content-primary);
+}
+
+.signup-success__card-account svg {
+  width: 16px;
+  height: 16px;
+}
+
+.signup-success__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 20px;
+  background-color: var(--color-bg-primary);
+}
+
+.signup-success__card-line {
+  height: 12px;
+  background-color: var(--color-neutral-300);
+  border-radius: 4px;
+}
+
+.signup-success__card-line--short {
+  width: 40%;
+}
+
+.signup-success__card-line--medium {
+  width: 70%;
+}
+
+.signup-success__card-line--long {
+  width: 55%;
+}
+
+.signup-success__message {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+
+.signup-success__title {
+  font-family: var(--font-family-secondary);
+  font-size: 40px;
+  font-weight: var(--font-weight-bold);
+  line-height: 0.85;
+  color: var(--color-content-primary);
+}
+
+.signup-success__subtitle {
+  font-family: var(--font-family-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--color-content-primary);
+}
+
+.signup-success__btn {
+  width: 100%;
+  text-decoration: none;
+}
+
+/* ========================================
    Responsive Styles
    ======================================== */
 
@@ -290,5 +477,33 @@
   
   .signup-data__section {
     padding: 16px 0;
+  }
+  
+  .signup-loading__content {
+    padding: 48px;
+  }
+  
+  .signup-loading__text--top {
+    font-size: 28px;
+  }
+  
+  .signup-loading__text--bottom {
+    font-size: 32px;
+  }
+  
+  .signup-loading__sidebar {
+    width: 25%;
+  }
+  
+  .signup-success__main {
+    padding: 24px;
+  }
+  
+  .signup-success__title {
+    font-size: 32px;
+  }
+  
+  .signup-success__subtitle {
+    font-size: 16px;
   }
 }
