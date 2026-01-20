@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bright - Senha de acesso">
+  <title>Senha de acesso - Bright</title>
+  
+  <!-- Design Tokens -->
+  <link rel="stylesheet" href="./styles/tokens.css">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="./styles/base.css">
+  
+  <!-- Login/Auth Page Styles -->
+  <link rel="stylesheet" href="./styles/login.css">
+  
+  <!-- Sign-up Steps Styles -->
+  <link rel="stylesheet" href="./styles/sign-up-steps.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+  <!-- Header -->
+  <header class="login-header">
+    <a href="./sign-up-step2.html" class="login-header__back" aria-label="Voltar para etapa anterior">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+    </a>
+    
+    <a href="./index.html" class="login-header__logo" aria-label="Bright - Home">
+      <img src="./assets/images/bright-logo.png" alt="Bright" />
+    </a>
+    
+    <a href="#" class="login-header__help">
+      Ajuda
+    </a>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="signup-progress">
+    <div class="signup-progress__bar signup-progress__bar--active"></div>
+    <div class="signup-progress__bar signup-progress__bar--active"></div>
+    <div class="signup-progress__bar"></div>
+    <div class="signup-progress__bar"></div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="login-content">
+    <div class="login-form-container">
+      <!-- Title Section -->
+      <div class="signup-password__header">
+        <h1 class="login-form__title">Senha de acesso</h1>
+        
+        <!-- Password Requirements Tags -->
+        <div class="signup-password__requirements">
+          <span class="signup-password__tag" data-requirement="minLength">Mínimo de 8 caracteres</span>
+          <span class="signup-password__tag" data-requirement="uppercase">Letra maiúscula</span>
+          <span class="signup-password__tag" data-requirement="lowercase">Letra minúscula</span>
+          <span class="signup-password__tag" data-requirement="number">Número</span>
+          <span class="signup-password__tag" data-requirement="special">Caracteres especiais</span>
+        </div>
+      </div>
+
+      <!-- Password Form -->
+      <form class="login-form" id="passwordForm">
+        <!-- Password Input -->
+        <div class="login-form__field">
+          <label for="password" class="login-form__label">Senha</label>
+          <div class="login-form__input-container login-form__input-container--password">
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              class="login-form__input"
+              autocomplete="new-password"
+            />
+            <button 
+              type="button" 
+              class="login-form__toggle-password" 
+              aria-label="Mostrar senha"
+              data-show="false"
+              data-target="password"
+            >
+              <!-- Eye Slash Icon (password hidden) -->
+              <svg class="login-form__eye-icon login-form__eye-icon--hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+              </svg>
+              <!-- Eye Icon (password visible) -->
+              <svg class="login-form__eye-icon login-form__eye-icon--visible" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Confirm Password Input -->
+        <div class="login-form__field">
+          <label for="confirmPassword" class="login-form__label">Confirmar senha</label>
+          <div class="login-form__input-container login-form__input-container--password">
+            <input 
+              type="password" 
+              id="confirmPassword" 
+              name="confirmPassword" 
+              class="login-form__input"
+              autocomplete="new-password"
+            />
+            <button 
+              type="button" 
+              class="login-form__toggle-password" 
+              aria-label="Mostrar senha"
+              data-show="false"
+              data-target="confirmPassword"
+            >
+              <!-- Eye Slash Icon (password hidden) -->
+              <svg class="login-form__eye-icon login-form__eye-icon--hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+              </svg>
+              <!-- Eye Icon (password visible) -->
+              <svg class="login-form__eye-icon login-form__eye-icon--visible" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="login-form__actions">
+          <button type="submit" class="login-form__submit" id="submitBtn" disabled>
+            Continuar
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    // Password Form Functionality
+    (function() {
+      const form = document.getElementById('passwordForm');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
+      const submitBtn = document.getElementById('submitBtn');
+      const toggleButtons = document.querySelectorAll('.login-form__toggle-password');
+      const requirementTags = document.querySelectorAll('.signup-password__tag');
+
+      // Password requirements validation
+      const requirements = {
+        minLength: (password) => password.length >= 8,
+        uppercase: (password) => /[A-Z]/.test(password),
+        lowercase: (password) => /[a-z]/.test(password),
+        number: (password) => /[0-9]/.test(password),
+        special: (password) => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)
+      };
+
+      // Toggle password visibility
+      toggleButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const targetId = this.getAttribute('data-target');
+          const targetInput = document.getElementById(targetId);
+          const isShowing = this.getAttribute('data-show') === 'true';
+          
+          if (isShowing) {
+            targetInput.type = 'password';
+            this.setAttribute('data-show', 'false');
+            this.setAttribute('aria-label', 'Mostrar senha');
+          } else {
+            targetInput.type = 'text';
+            this.setAttribute('data-show', 'true');
+            this.setAttribute('aria-label', 'Ocultar senha');
+          }
+        });
+      });
+
+      // Validate password and update requirement tags
+      function validatePassword() {
+        const password = passwordInput.value;
+        let allValid = true;
+
+        // Check each requirement and update tag styling
+        requirementTags.forEach(tag => {
+          const requirement = tag.getAttribute('data-requirement');
+          const isValid = requirements[requirement](password);
+          
+          if (isValid) {
+            tag.classList.add('signup-password__tag--valid');
+          } else {
+            tag.classList.remove('signup-password__tag--valid');
+            allValid = false;
+          }
+        });
+
+        return allValid;
+      }
+
+      // Validate form and enable/disable submit button
+      function validateForm() {
+        const isPasswordValid = validatePassword();
+        const doPasswordsMatch = passwordInput.value === confirmPasswordInput.value && confirmPasswordInput.value !== '';
+        
+        if (isPasswordValid && doPasswordsMatch) {
+          submitBtn.disabled = false;
+        } else {
+          submitBtn.disabled = true;
+        }
+      }
+
+      // Event listeners
+      passwordInput.addEventListener('input', validateForm);
+      confirmPasswordInput.addEventListener('input', validateForm);
+
+      // Form submission
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (!submitBtn.disabled) {
+          console.log('Password set successfully');
+          // Navigate to next step (to be implemented)
+          // window.location.href = './sign-up-step4.html';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

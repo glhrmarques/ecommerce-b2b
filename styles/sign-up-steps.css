@@ -120,6 +120,46 @@
 }
 
 /* ========================================
+   Password Step Styles
+   ======================================== */
+
+.signup-password__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+.signup-password__requirements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.signup-password__tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  background-color: var(--color-neutral-300);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body-default);
+  font-weight: var(--font-weight-regular);
+  line-height: 22px;
+  color: var(--color-content-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.signup-password__tag--valid {
+  background-color: #143154;
+  color: var(--color-neutral-100);
+}
+
+/* ========================================
    Responsive Styles
    ======================================== */
 
