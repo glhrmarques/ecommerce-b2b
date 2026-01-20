@@ -313,7 +313,7 @@
 }
 
 .signup-loading__text--main {
-  font-size: 48px;
+  font-size: 44px;
   line-height: 1;
 }
 
@@ -469,6 +469,7 @@
 .signup-success__btn {
   width: 100%;
   text-decoration: none;
+  text-align: center;
 }
 
 /* ========================================
