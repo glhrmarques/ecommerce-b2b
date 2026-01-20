@@ -4,17 +4,19 @@
  * Handles slideshow/carousel functionality for promotional banners
  */
 
+(function(global) {
+  'use strict';
+
 /**
  * Initialize the banners component
  * @param {Object} options - Configuration options
  * @param {number} options.autoPlayInterval - Auto-play interval in milliseconds (default: 5000)
  * @param {boolean} options.autoPlay - Enable auto-play (default: true)
  */
-export function initBanners(options = {}) {
-  const {
-    autoPlayInterval = 5000,
-    autoPlay = true
-  } = options;
+function initBanners(options) {
+  options = options || {};
+  var autoPlayInterval = options.autoPlayInterval !== undefined ? options.autoPlayInterval : 5000;
+  var autoPlay = options.autoPlay !== undefined ? options.autoPlay : true;
 
   const banners = document.querySelector('.banners');
   if (!banners) {
@@ -173,10 +175,15 @@ export function initBanners(options = {}) {
 
   // Return control methods for external use
   return {
-    goToSlide,
-    nextSlide,
-    prevSlide,
-    startAutoPlay,
-    stopAutoPlay
+    goToSlide: goToSlide,
+    nextSlide: nextSlide,
+    prevSlide: prevSlide,
+    startAutoPlay: startAutoPlay,
+    stopAutoPlay: stopAutoPlay
   };
 }
+
+  // Make function available globally
+  global.initBanners = initBanners;
+
+})(typeof window !== 'undefined' ? window : this);

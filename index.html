@@ -262,38 +262,27 @@
   </main>
 
   <!-- Component Scripts -->
-  <script type="module">
-    import { initHeader } from './components/header/header.js';
-    import { initBanners } from './components/banners/banners.js';
-    import { initProductCards } from './components/product-card/product-card.js';
-    
+  <script src="./components/header/header.js"></script>
+  <script src="./components/banners/banners.js"></script>
+  <script src="./components/product-card/product-card.js"></script>
+  
+  <script>
     // Initialize the header with configuration
     initHeader({
-      activeNavItem: 'produtos', // Set the active navigation item
-      onSearch: (query) => {
-        // Handle search functionality
+      activeNavItem: 'produtos',
+      onSearch: function(query) {
         console.log('Searching for:', query);
-        // You can implement your search logic here
       }
     });
 
     // Initialize the banners with configuration
     initBanners({
       autoPlay: true,
-      autoPlayInterval: 5000 // Change slides every 5 seconds
+      autoPlayInterval: 5000
     });
 
-    // Initialize product cards with interaction handlers
-    initProductCards({
-      onClick: (data) => {
-        console.log('Product card clicked:', data.productName);
-        // You can implement navigation to product detail page here
-      },
-      onButtonClick: (data) => {
-        console.log('View price clicked for:', data.productName);
-        // You can implement price reveal or modal here
-      }
-    });
+    // Initialize product cards - navigation to product details is automatic
+    initProductCards();
   </script>
 
   <!-- Footer Component -->

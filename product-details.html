@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bright - Detalhes do Produto">
+  <title>Bright - Detalhes do Produto</title>
+  
+  <!-- Design Tokens -->
+  <link rel="stylesheet" href="./styles/tokens.css">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="./styles/base.css">
+  
+  <!-- Header Component Styles -->
+  <link rel="stylesheet" href="./components/header/header.css">
+  
+  <!-- Product Card Component Styles -->
+  <link rel="stylesheet" href="./components/product-card/product-card.css">
+  
+  <!-- Footer Component Styles -->
+  <link rel="stylesheet" href="./components/footer/footer.css">
+  
+  <!-- Product Details Page Styles -->
+  <link rel="stylesheet" href="./styles/product-details.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header Component -->
+  <header class="header">
+    <!-- Top Bar: Logo, Search, Auth -->
+    <div class="header__top">
+      <!-- Logo -->
+      <a href="/" class="header__logo" aria-label="Bright - Home">
+        <img src="./assets/images/bright-logo.png" alt="Bright" />
+      </a>
+
+      <!-- Search Bar -->
+      <form class="header__search" role="search">
+        <div class="header__search-container">
+          <div class="header__search-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input 
+            type="search" 
+            class="header__search-input" 
+            placeholder="Busque por produtos, marcas e muito mais..."
+            aria-label="Buscar produtos"
+          />
+        </div>
+      </form>
+
+      <!-- Auth Buttons -->
+      <div class="header__auth">
+        <a href="/login" class="header__btn header__btn--secondary">
+          Entrar
+        </a>
+        <a href="/register" class="header__btn header__btn--primary">
+          Criar conta
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="header__nav" role="navigation" aria-label="Menu principal">
+      <ul class="header__nav-list">
+        <li class="header__nav-item">
+          <a href="./category.html" class="header__nav-link" data-nav-item="produtos">
+            Todos os produtos
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="./category.html" class="header__nav-link" data-nav-item="novidades">
+            Novidades
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="./category.html" class="header__nav-link" data-nav-item="marcas">
+            Marcas
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="./category.html" class="header__nav-link" data-nav-item="promocoes">
+            Promoções
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="product-details">
+      <!-- Breadcrumb Navigation -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item">
+            <a href="./index.html" class="breadcrumb__link">INÍCIO</a>
+          </li>
+          <li class="breadcrumb__separator">/</li>
+          <li class="breadcrumb__item">
+            <a href="./category.html" class="breadcrumb__link" id="breadcrumb-category">PRODUTOS</a>
+          </li>
+          <li class="breadcrumb__separator">/</li>
+          <li class="breadcrumb__item breadcrumb__item--current">
+            <span id="breadcrumb-product">CADEIRA GAMER PRETA</span>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Product Content -->
+      <div class="product-details__content">
+        <!-- Product Gallery -->
+        <div class="product-gallery">
+          <!-- Thumbnails -->
+          <div class="product-gallery__thumbnails">
+            <button class="product-gallery__thumbnail product-gallery__thumbnail--active" data-index="0">
+              <img src="./assets/images/productcard-1.jpg" alt="Thumbnail 1" />
+            </button>
+          </div>
+          
+          <!-- Main Image -->
+          <div class="product-gallery__main">
+            <img 
+              src="./assets/images/productcard-1.jpg" 
+              alt="Cadeira gamer Preta" 
+              class="product-gallery__image"
+              id="main-product-image"
+            />
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+          <div class="product-info__header">
+            <span class="product-info__ean" id="product-ean">EAN 7896046700584</span>
+            <h1 class="product-info__name" id="product-name">Cadeira gamer Preta</h1>
+          </div>
+          
+          <button class="product-info__cta">
+            Ver preço
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Tabs Section -->
+      <div class="product-tabs">
+        <div class="product-tabs__header">
+          <button class="product-tabs__tab product-tabs__tab--active" data-tab="description">
+            Descrição
+          </button>
+          <button class="product-tabs__tab" data-tab="features">
+            Características
+          </button>
+        </div>
+        
+        <div class="product-tabs__content">
+          <div class="product-tabs__panel product-tabs__panel--active" id="tab-description">
+            <p class="product-tabs__text" id="product-description">
+              Cadeira Gamer ergonômica com design moderno e confortável. Ideal para longas horas de uso, seja para trabalho ou gaming. Possui ajuste de altura, apoio de braços e encosto reclinável para maior conforto.
+            </p>
+          </div>
+          <div class="product-tabs__panel" id="tab-features">
+            <ul class="product-tabs__features-list">
+              <li>Material: Couro sintético premium</li>
+              <li>Peso máximo suportado: 120kg</li>
+              <li>Altura ajustável: 45-55cm</li>
+              <li>Reclinação: até 180°</li>
+              <li>Apoio de braços ajustáveis</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Products Carousel -->
+      <section class="product-carousel">
+        <div class="product-carousel__header">
+          <div class="product-carousel__title-group">
+            <h2 class="product-carousel__title">Lançamentos que você vai gostar</h2>
+            <button class="product-carousel__view-all">Ver tudo</button>
+          </div>
+          <div class="product-carousel__arrows">
+            <button class="product-carousel__arrow product-carousel__arrow--prev" aria-label="Anterior">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button class="product-carousel__arrow product-carousel__arrow--next" aria-label="Próximo">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <div class="product-carousel__grid">
+          <!-- Related Product 1 -->
+          <article class="product-card" data-product-id="1" data-product-ean="7896046700584" data-product-name="Cadeira gamer Preta" data-product-image="./assets/images/productcard-1.jpg">
+            <div class="product-card__image-container">
+              <img src="./assets/images/productcard-2.jpg" alt="Monitor Led Full Hd 27'' Office" class="product-card__image" />
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__ean">EAN 7897982208271</span>
+              <h3 class="product-card__name">Monitor Led Full Hd 27'' Office</h3>
+            </div>
+            <button class="product-card__button">Ver preço</button>
+          </article>
+
+          <!-- Related Product 2 -->
+          <article class="product-card" data-product-id="2" data-product-ean="7897982208271" data-product-name="Monitor Led Full Hd 27'' Office" data-product-image="./assets/images/productcard-2.jpg">
+            <div class="product-card__image-container">
+              <img src="./assets/images/productcard-3.jpg" alt="Mouse USB Amarelo" class="product-card__image" />
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__ean">EAN 789798220520-1</span>
+              <h3 class="product-card__name">Mouse USB Amarelo</h3>
+            </div>
+            <button class="product-card__button">Ver preço</button>
+          </article>
+
+          <!-- Related Product 3 -->
+          <article class="product-card" data-product-id="3" data-product-ean="789798220520-1" data-product-name="Mouse USB Amarelo" data-product-image="./assets/images/productcard-3.jpg">
+            <div class="product-card__image-container">
+              <img src="./assets/images/productcard-4.jpg" alt="Fone de Ouvido Sem Fio Blacksound II" class="product-card__image" />
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__ean">EAN 7897982207397</span>
+              <h3 class="product-card__name">Fone de Ouvido Sem Fio Blacksound II</h3>
+            </div>
+            <button class="product-card__button">Ver preço</button>
+          </article>
+
+          <!-- Related Product 4 -->
+          <article class="product-card" data-product-id="4" data-product-ean="7897982207397" data-product-name="Fone de Ouvido Sem Fio Blacksound II" data-product-image="./assets/images/productcard-4.jpg">
+            <div class="product-card__image-container">
+              <img src="./assets/images/productcard-5.jpg" alt="Placa Mãe H55 Bright" class="product-card__image" />
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__ean">EAN 789798220875</span>
+              <h3 class="product-card__name">Placa Mãe H55 Bright</h3>
+            </div>
+            <button class="product-card__button">Ver preço</button>
+          </article>
+
+          <!-- Related Product 5 -->
+          <article class="product-card" data-product-id="5" data-product-ean="789798220875" data-product-name="Placa Mãe H55 Bright" data-product-image="./assets/images/productcard-5.jpg">
+            <div class="product-card__image-container">
+              <img src="./assets/images/productcard-1.jpg" alt="Cadeira gamer Preta" class="product-card__image" />
+            </div>
+            <div class="product-card__info">
+              <span class="product-card__ean">EAN 7896046700584</span>
+              <h3 class="product-card__name">Cadeira gamer Preta</h3>
+            </div>
+            <button class="product-card__button">Ver preço</button>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer Component -->
+  <footer class="footer">
+    <!-- Footer Links Section -->
+    <div class="footer__content">
+      <!-- Institucional Column -->
+      <div class="footer__column">
+        <h3 class="footer__title">Institucional</h3>
+        <ul class="footer__links">
+          <li><a href="/sobre" class="footer__link">Sobre nós</a></li>
+          <li><a href="/blog" class="footer__link">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Privacidade e Termos Column -->
+      <div class="footer__column">
+        <h3 class="footer__title">Privacidade e termos</h3>
+        <ul class="footer__links">
+          <li><a href="/privacidade" class="footer__link">Política de Privacidade</a></li>
+          <li><a href="/cookies" class="footer__link">Política de Cookies</a></li>
+        </ul>
+      </div>
+
+      <!-- Suporte e Soluções Column -->
+      <div class="footer__column">
+        <h3 class="footer__title">Suporte e soluções</h3>
+        <ul class="footer__links">
+          <li><a href="/ajuda" class="footer__link">Central de ajuda</a></li>
+        </ul>
+      </div>
+
+      <!-- Fale Conosco Column -->
+      <div class="footer__column footer__column--contact">
+        <h3 class="footer__title">Fale conosco</h3>
+        <ul class="footer__links">
+          <li><a href="tel:1193065-9533" class="footer__link">SAC: (11) 93065-9533</a></li>
+          <li><a href="mailto:atendimento@.com.br" class="footer__link">atendimento@.com.br</a></li>
+          <li class="footer__text">Atendimento de Segunda a Sexta-Feira (08h00 às 18h00)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom - Logo -->
+    <div class="footer__bottom">
+      <a href="/" class="footer__logo" aria-label="Bright - Home">
+        <img src="assets/images/bright-logo.png" alt="Bright" />
+      </a>
+    </div>
+  </footer>
+
+  <!-- Component Scripts -->
+  <script src="components/header/header.js"></script>
+  <script src="components/product-card/product-card.js"></script>
+  <script src="components/footer/footer.js"></script>
+
+  <!-- Product Details Page Script -->
+  <script>
+    // Get product data from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    const productName = urlParams.get('name') || 'Cadeira gamer Preta';
+    const productEan = urlParams.get('ean') || 'EAN 7896046700584';
+    const productImage = urlParams.get('image') || './assets/images/productcard-1.jpg';
+
+    // Update page content with product data
+    document.getElementById('product-name').textContent = productName;
+    document.getElementById('product-ean').textContent = productEan;
+    document.getElementById('main-product-image').src = productImage;
+    document.getElementById('main-product-image').alt = productName;
+    document.getElementById('breadcrumb-product').textContent = productName.toUpperCase();
+    
+    // Update page title
+    document.title = `Bright - ${productName}`;
+
+    // Update thumbnail
+    const thumbnail = document.querySelector('.product-gallery__thumbnail img');
+    if (thumbnail) {
+      thumbnail.src = productImage;
+    }
+
+    // Tab switching functionality
+    const tabs = document.querySelectorAll('.product-tabs__tab');
+    const panels = document.querySelectorAll('.product-tabs__panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetTab = tab.dataset.tab;
+        
+        // Update active tab
+        tabs.forEach(t => t.classList.remove('product-tabs__tab--active'));
+        tab.classList.add('product-tabs__tab--active');
+        
+        // Update active panel
+        panels.forEach(panel => {
+          panel.classList.remove('product-tabs__panel--active');
+          if (panel.id === `tab-${targetTab}`) {
+            panel.classList.add('product-tabs__panel--active');
+          }
+        });
+      });
+    });
+
+    // Thumbnail click functionality
+    const thumbnails = document.querySelectorAll('.product-gallery__thumbnail');
+    const mainImage = document.getElementById('main-product-image');
+
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        // Update active thumbnail
+        thumbnails.forEach(t => t.classList.remove('product-gallery__thumbnail--active'));
+        thumb.classList.add('product-gallery__thumbnail--active');
+        
+        // Update main image
+        const thumbImg = thumb.querySelector('img');
+        mainImage.src = thumbImg.src;
+      });
+    });
+
+    // Initialize related product cards - navigation to product details is automatic
+    initProductCards();
+
+    console.log('Product details page loaded:', productName);
+  </script>
+</body>
+</html>
