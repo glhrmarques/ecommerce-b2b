@@ -120,6 +120,106 @@
 }
 
 /* ========================================
+   Phone Verification Step Styles
+   ======================================== */
+
+.signup-phone__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+.signup-phone__subtitle {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  line-height: 24px;
+  color: #373d43;
+}
+
+.signup-phone__subtitle strong {
+  font-weight: var(--font-weight-bold);
+}
+
+/* ========================================
+   Verification Code Input Styles
+   ======================================== */
+
+.signup-code {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  justify-content: center;
+}
+
+.signup-code__input {
+  flex: 1;
+  max-width: 80px;
+  height: 48px;
+  padding: 0 13px;
+  border: 1px solid var(--color-neutral-500);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-primary);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  line-height: 21px;
+  color: var(--color-content-primary);
+  text-align: center;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.signup-code__input:focus {
+  outline: none;
+  border-color: var(--color-content-primary);
+  box-shadow: 0 0 0 1px var(--color-content-primary);
+}
+
+.signup-code__input::placeholder {
+  color: var(--color-neutral-500);
+}
+
+.signup-code__resend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-large);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-neutral-500);
+}
+
+.signup-code__resend-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-large);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-neutral-500);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.signup-code__resend-btn:disabled {
+  cursor: not-allowed;
+}
+
+.signup-code__resend-btn:not(:disabled) {
+  color: var(--color-content-primary);
+  text-decoration: underline;
+}
+
+.signup-code__resend-btn:not(:disabled):hover {
+  opacity: 0.7;
+}
+
+/* ========================================
    Password Step Styles
    ======================================== */
 

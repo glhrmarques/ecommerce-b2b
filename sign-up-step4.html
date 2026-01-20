@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bright - Verificar número de celular">
+  <title>Verificar celular - Bright</title>
+  
+  <!-- Design Tokens -->
+  <link rel="stylesheet" href="./styles/tokens.css">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="./styles/base.css">
+  
+  <!-- Login/Auth Page Styles -->
+  <link rel="stylesheet" href="./styles/login.css">
+  
+  <!-- Sign-up Steps Styles -->
+  <link rel="stylesheet" href="./styles/sign-up-steps.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+  <!-- Header -->
+  <header class="login-header">
+    <a href="./sign-up-step3.html" class="login-header__back" aria-label="Voltar para etapa anterior">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+    </a>
+    
+    <a href="./index.html" class="login-header__logo" aria-label="Bright - Home">
+      <img src="./assets/images/bright-logo.png" alt="Bright" />
+    </a>
+    
+    <a href="#" class="login-header__help">
+      Ajuda
+    </a>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="signup-progress">
+    <div class="signup-progress__bar signup-progress__bar--active"></div>
+    <div class="signup-progress__bar signup-progress__bar--active"></div>
+    <div class="signup-progress__bar signup-progress__bar--active"></div>
+    <div class="signup-progress__bar"></div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="login-content">
+    <div class="login-form-container">
+      <!-- Title Section -->
+      <div class="signup-phone__header">
+        <h1 class="login-form__title">Verificar número de celular</h1>
+        <p class="signup-phone__subtitle">
+          Para sua conta ficar ainda mais segura, precisamos validar seu <strong>número de celular com WhatsApp</strong>
+        </p>
+      </div>
+
+      <!-- Phone Form -->
+      <form class="login-form" id="phoneForm">
+        <!-- Phone Input -->
+        <div class="login-form__field">
+          <label for="phone" class="login-form__label">Celular com WhatsApp</label>
+          <div class="login-form__input-container">
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              class="login-form__input"
+              placeholder="(00) 90000-0000"
+              autocomplete="tel"
+            />
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="login-form__actions">
+          <button type="submit" class="login-form__submit" id="submitBtn" disabled>
+            Enviar código
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    // Phone Form Functionality
+    (function() {
+      const form = document.getElementById('phoneForm');
+      const phoneInput = document.getElementById('phone');
+      const submitBtn = document.getElementById('submitBtn');
+
+      // Phone mask function
+      function formatPhone(value) {
+        // Remove all non-digits
+        const digits = value.replace(/\D/g, '');
+        
+        // Apply mask: (00) 90000-0000
+        if (digits.length <= 2) {
+          return digits.length ? '(' + digits : '';
+        } else if (digits.length <= 7) {
+          return '(' + digits.slice(0, 2) + ') ' + digits.slice(2);
+        } else {
+          return '(' + digits.slice(0, 2) + ') ' + digits.slice(2, 7) + '-' + digits.slice(7, 11);
+        }
+      }
+
+      // Apply phone mask on input
+      phoneInput.addEventListener('input', function(e) {
+        const cursorPosition = e.target.selectionStart;
+        const oldLength = e.target.value.length;
+        e.target.value = formatPhone(e.target.value);
+        const newLength = e.target.value.length;
+        
+        // Adjust cursor position
+        const newPosition = cursorPosition + (newLength - oldLength);
+        e.target.setSelectionRange(newPosition, newPosition);
+        
+        validateForm();
+      });
+
+      // Validate form and enable/disable submit button
+      function validateForm() {
+        // Check if phone has at least 14 characters (full format)
+        const isPhoneFilled = phoneInput.value.replace(/\D/g, '').length >= 11;
+        
+        if (isPhoneFilled) {
+          submitBtn.disabled = false;
+        } else {
+          submitBtn.disabled = true;
+        }
+      }
+
+      // Form submission
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (!submitBtn.disabled) {
+          // Store phone number for next step
+          sessionStorage.setItem('signupPhone', phoneInput.value);
+          
+          console.log('Phone submitted:', phoneInput.value);
+          // Navigate to verification code step
+          window.location.href = './sign-up-step5.html';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

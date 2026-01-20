@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bright - Código de verificação">
+  <title>Código de verificação - Bright</title>
+  
+  <!-- Design Tokens -->
+  <link rel="stylesheet" href="./styles/tokens.css">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="./styles/base.css">
+  
+  <!-- Login/Auth Page Styles -->
+  <link rel="stylesheet" href="./styles/login.css">
+  
+  <!-- Sign-up Steps Styles -->
+  <link rel="stylesheet" href="./styles/sign-up-steps.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+  <!-- Header -->
+  <header class="login-header">
+    <a href="./sign-up-step4.html" class="login-header__back" aria-label="Voltar para etapa anterior">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+    </a>
+    
+    <a href="./index.html" class="login-header__logo" aria-label="Bright - Home">
+      <img src="./assets/images/bright-logo.png" alt="Bright" />
+    </a>
+    
+    <a href="#" class="login-header__help">
+      Ajuda
+    </a>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="signup-progress">
+    <div class="signup-progress__bar signup-progress__bar--active"></div>
+    <div class="signup-progress__bar signup-progress__bar--active"></div>
+    <div class="signup-progress__bar signup-progress__bar--active"></div>
+    <div class="signup-progress__bar signup-progress__bar--active"></div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="login-content">
+    <div class="login-form-container">
+      <!-- Title Section -->
+      <div class="signup-phone__header">
+        <h1 class="login-form__title">Código de verificação</h1>
+        <p class="signup-phone__subtitle">
+          Enviamos o código de 6 dígitos para <strong id="phoneDisplay">(11) 90000-0000</strong>
+        </p>
+      </div>
+
+      <!-- Verification Code Form -->
+      <form class="login-form" id="verificationForm">
+        <!-- 6 Digit Code Input -->
+        <div class="signup-code">
+          <input type="text" class="signup-code__input" maxlength="1" data-index="0" inputmode="numeric" pattern="[0-9]" autocomplete="one-time-code" />
+          <input type="text" class="signup-code__input" maxlength="1" data-index="1" inputmode="numeric" pattern="[0-9]" />
+          <input type="text" class="signup-code__input" maxlength="1" data-index="2" inputmode="numeric" pattern="[0-9]" />
+          <input type="text" class="signup-code__input" maxlength="1" data-index="3" inputmode="numeric" pattern="[0-9]" />
+          <input type="text" class="signup-code__input" maxlength="1" data-index="4" inputmode="numeric" pattern="[0-9]" />
+          <input type="text" class="signup-code__input" maxlength="1" data-index="5" inputmode="numeric" pattern="[0-9]" />
+        </div>
+
+        <!-- Submit Button -->
+        <div class="login-form__actions">
+          <button type="submit" class="login-form__submit" id="submitBtn" disabled>
+            Continuar
+          </button>
+        </div>
+
+        <!-- Resend Code -->
+        <div class="signup-code__resend">
+          <span id="resendTimer">0:30</span> <button type="button" id="resendBtn" class="signup-code__resend-btn" disabled>Reenviar código</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    // Verification Code Form Functionality
+    (function() {
+      const form = document.getElementById('verificationForm');
+      const codeInputs = document.querySelectorAll('.signup-code__input');
+      const submitBtn = document.getElementById('submitBtn');
+      const resendTimer = document.getElementById('resendTimer');
+      const resendBtn = document.getElementById('resendBtn');
+      const phoneDisplay = document.getElementById('phoneDisplay');
+
+      // Get phone from previous step (or use default)
+      const storedPhone = sessionStorage.getItem('signupPhone') || '(11) 90000-0000';
+      phoneDisplay.textContent = storedPhone;
+
+      // Timer countdown
+      let timeLeft = 30;
+      const countdown = setInterval(function() {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        resendTimer.textContent = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+        
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+          resendBtn.disabled = false;
+          resendTimer.style.display = 'none';
+        }
+      }, 1000);
+
+      // Handle code input
+      codeInputs.forEach((input, index) => {
+        // Only allow numbers
+        input.addEventListener('input', function(e) {
+          const value = e.target.value.replace(/\D/g, '');
+          e.target.value = value;
+          
+          if (value && index < codeInputs.length - 1) {
+            codeInputs[index + 1].focus();
+          }
+          
+          validateForm();
+        });
+
+        // Handle backspace
+        input.addEventListener('keydown', function(e) {
+          if (e.key === 'Backspace' && !e.target.value && index > 0) {
+            codeInputs[index - 1].focus();
+          }
+        });
+
+        // Handle paste
+        input.addEventListener('paste', function(e) {
+          e.preventDefault();
+          const pastedData = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6);
+          
+          pastedData.split('').forEach((char, i) => {
+            if (codeInputs[i]) {
+              codeInputs[i].value = char;
+            }
+          });
+          
+          // Focus on the next empty input or last input
+          const nextEmpty = Array.from(codeInputs).findIndex(inp => !inp.value);
+          if (nextEmpty !== -1) {
+            codeInputs[nextEmpty].focus();
+          } else {
+            codeInputs[codeInputs.length - 1].focus();
+          }
+          
+          validateForm();
+        });
+      });
+
+      // Validate form
+      function validateForm() {
+        const code = Array.from(codeInputs).map(input => input.value).join('');
+        
+        if (code.length === 6) {
+          submitBtn.disabled = false;
+        } else {
+          submitBtn.disabled = true;
+        }
+      }
+
+      // Resend code
+      resendBtn.addEventListener('click', function() {
+        console.log('Resending code...');
+        // Reset timer
+        timeLeft = 30;
+        resendBtn.disabled = true;
+        resendTimer.style.display = 'inline';
+        
+        const newCountdown = setInterval(function() {
+          timeLeft--;
+          const minutes = Math.floor(timeLeft / 60);
+          const seconds = timeLeft % 60;
+          resendTimer.textContent = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+          
+          if (timeLeft <= 0) {
+            clearInterval(newCountdown);
+            resendBtn.disabled = false;
+            resendTimer.style.display = 'none';
+          }
+        }, 1000);
+      });
+
+      // Form submission
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (!submitBtn.disabled) {
+          const code = Array.from(codeInputs).map(input => input.value).join('');
+          console.log('Verification code submitted:', code);
+          
+          // Clear session storage
+          sessionStorage.removeItem('signupPhone');
+          
+          // Registration complete - redirect to login or home
+          alert('Cadastro realizado com sucesso!');
+          window.location.href = './login.html';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
