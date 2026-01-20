@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bright - Cadastro Concluído">
+  <title>Cadastro Concluído - Bright</title>
+  
+  <!-- Design Tokens -->
+  <link rel="stylesheet" href="./styles/tokens.css">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="./styles/base.css">
+  
+  <!-- Login/Auth Page Styles -->
+  <link rel="stylesheet" href="./styles/login.css">
+  
+  <!-- Sign-up Steps Styles -->
+  <link rel="stylesheet" href="./styles/sign-up-steps.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+  <!-- Loading Overlay -->
+  <div class="signup-loading" id="loadingOverlay">
+    <div class="signup-loading__content">
+      <div class="signup-loading__text-container">
+        <p class="signup-loading__text signup-loading__text--main">
+          <span class="text-wrapper">
+            <span class="letters" id="loadingText">Salvando informações</span>
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="signup-loading__sidebar"></div>
+  </div>
+
+  <!-- Success Content (hidden initially) -->
+  <div class="signup-success" id="successContent" style="display: none;">
+    <!-- Header -->
+    <header class="login-header">
+      <a href="./index.html" class="login-header__back" aria-label="Voltar para página inicial">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+      </a>
+      
+      <a href="./index.html" class="login-header__logo" aria-label="Bright - Home">
+        <img src="./assets/images/bright-logo.png" alt="Bright" />
+      </a>
+      
+      <a href="#" class="login-header__help">
+        Ajuda
+      </a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="signup-success__main">
+      <div class="signup-success__container">
+        <!-- Illustration Card -->
+        <div class="signup-success__card">
+          <div class="signup-success__card-header">
+            <div class="signup-success__card-placeholder"></div>
+            <div class="signup-success__card-badge">Crédito em análise..</div>
+            <div class="signup-success__card-account">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
+              </svg>
+              <span>Minha conta</span>
+            </div>
+          </div>
+          <div class="signup-success__card-body">
+            <div class="signup-success__card-line signup-success__card-line--short"></div>
+            <div class="signup-success__card-line signup-success__card-line--medium"></div>
+            <div class="signup-success__card-line signup-success__card-line--long"></div>
+          </div>
+        </div>
+
+        <!-- Success Message -->
+        <div class="signup-success__message">
+          <h1 class="signup-success__title">Cadastro concluído!</h1>
+          <p class="signup-success__subtitle">
+            Em breve informaremos seu limite de crédito para comprar com o boleto parcelado.
+          </p>
+        </div>
+
+        <!-- Continue Button -->
+        <a href="./login.html" class="login-form__submit login-form__submit--always-enabled signup-success__btn">
+          Continuar
+        </a>
+      </div>
+    </main>
+  </div>
+
+  <!-- Anime.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+  <script>
+    // Loading Animation Sequence with Anime.js
+    (function() {
+      const loadingOverlay = document.getElementById('loadingOverlay');
+      const successContent = document.getElementById('successContent');
+      const loadingText = document.getElementById('loadingText');
+
+      const messages = [
+        'Salvando informações',
+        'Criando sua conta',
+        'Realizando análise de crédito'
+      ];
+
+      let currentIndex = 0;
+
+      // Wrap each letter in a span
+      function wrapLetters(element) {
+        const text = element.textContent;
+        element.innerHTML = text.replace(/\S/g, "<span class='letter'>$&</span>");
+      }
+
+      // Animate text in (letters appear from bottom)
+      function animateIn(callback) {
+        wrapLetters(loadingText);
+        anime({
+          targets: loadingText.querySelectorAll('.letter'),
+          translateY: [100, 0],
+          opacity: [0, 1],
+          easing: "easeOutExpo",
+          duration: 1000,
+          delay: (el, i) => 20 * i,
+          complete: callback
+        });
+      }
+
+      // Animate text out (letters disappear to top)
+      function animateOut(callback) {
+        anime({
+          targets: loadingText.querySelectorAll('.letter'),
+          translateY: [0, -100],
+          opacity: [1, 0],
+          easing: "easeInExpo",
+          duration: 500,
+          delay: (el, i) => 15 * i,
+          complete: callback
+        });
+      }
+
+      function showNextMessage() {
+        currentIndex++;
+        
+        if (currentIndex >= messages.length) {
+          // All messages done, show success
+          setTimeout(showSuccess, 300);
+          return;
+        }
+
+        // Animate out current text
+        animateOut(function() {
+          // Update text content
+          loadingText.textContent = messages[currentIndex];
+          
+          // Animate in new text
+          animateIn(function() {
+            // Wait then show next message
+            setTimeout(showNextMessage, 300);
+          });
+        });
+      }
+
+      function showSuccess() {
+        loadingOverlay.style.display = 'none';
+        successContent.style.display = 'flex';
+      }
+
+      // Start: Animate first message
+      animateIn(function() {
+        setTimeout(showNextMessage, 300);
+      });
+    })();
+  </script>
+</body>
+</html>
