@@ -204,9 +204,8 @@
           // Clear session storage
           sessionStorage.removeItem('signupPhone');
           
-          // Registration complete - redirect to login or home
-          alert('Cadastro realizado com sucesso!');
-          window.location.href = './login.html';
+          // Navigate to next step (invoice email)
+          window.location.href = './sign-up-step6.html';
         }
       });
     })();

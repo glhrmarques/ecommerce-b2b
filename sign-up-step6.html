@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bright - Recebimento das Notas Fiscais">
+  <title>Notas Fiscais - Bright</title>
+  
+  <!-- Design Tokens -->
+  <link rel="stylesheet" href="./styles/tokens.css">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="./styles/base.css">
+  
+  <!-- Login/Auth Page Styles -->
+  <link rel="stylesheet" href="./styles/login.css">
+  
+  <!-- Sign-up Steps Styles -->
+  <link rel="stylesheet" href="./styles/sign-up-steps.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+  <!-- Header -->
+  <header class="login-header">
+    <a href="./sign-up-step5.html" class="login-header__back" aria-label="Voltar para etapa anterior">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+    </a>
+    
+    <a href="./index.html" class="login-header__logo" aria-label="Bright - Home">
+      <img src="./assets/images/bright-logo.png" alt="Bright" />
+    </a>
+    
+    <a href="#" class="login-header__help">
+      Ajuda
+    </a>
+  </header>
+
+  <!-- Main Content -->
+  <main class="login-content">
+    <div class="login-form-container">
+      <!-- Title Section -->
+      <div class="signup-phone__header">
+        <h1 class="login-form__title">Recebimento das Notas Fiscais</h1>
+        <p class="signup-phone__subtitle">
+          Se preferir, podemos enviar as Notas Fiscais em XML<br>
+          dos seus pedidos para outro e-mail
+        </p>
+      </div>
+
+      <!-- Invoice Email Form -->
+      <form class="login-form" id="invoiceForm">
+        <!-- Email XML Input (Optional) -->
+        <div class="login-form__field">
+          <label for="emailXml" class="login-form__label">E-mail XML (opcional)</label>
+          <div class="login-form__input-container">
+            <input 
+              type="email" 
+              id="emailXml" 
+              name="emailXml" 
+              class="login-form__input"
+              placeholder="email@empresa.com"
+              autocomplete="email"
+            />
+          </div>
+        </div>
+
+        <!-- Submit Button - Always Enabled -->
+        <div class="login-form__actions">
+          <button type="submit" class="login-form__submit login-form__submit--always-enabled" id="submitBtn">
+            Continuar
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    // Invoice Form Functionality
+    (function() {
+      const form = document.getElementById('invoiceForm');
+      const emailXmlInput = document.getElementById('emailXml');
+
+      // Form submission
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const emailXml = emailXmlInput.value.trim();
+        
+        if (emailXml) {
+          console.log('XML email set:', emailXml);
+        } else {
+          console.log('No XML email provided, skipping...');
+        }
+        
+        // Registration complete - redirect to success or login
+        alert('Cadastro realizado com sucesso!');
+        window.location.href = './login.html';
+      });
+    })();
+  </script>
+</body>
+</html>

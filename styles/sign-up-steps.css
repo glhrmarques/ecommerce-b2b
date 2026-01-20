@@ -119,6 +119,22 @@
   outline-offset: 2px;
 }
 
+/* Always Enabled Button State */
+.login-form__submit--always-enabled {
+  background-color: var(--color-neutral-900);
+  color: var(--color-neutral-100);
+  cursor: pointer;
+}
+
+.login-form__submit--always-enabled:hover {
+  background-color: var(--color-content-primary);
+}
+
+.login-form__submit--always-enabled:focus {
+  outline: 2px solid var(--color-content-primary);
+  outline-offset: 2px;
+}
+
 /* ========================================
    Phone Verification Step Styles
    ======================================== */
